@@ -1,0 +1,51 @@
+<div class="wrapper">
+    <app-path-bar [path]="path"></app-path-bar>
+    <div class="container">
+        <form *ngIf="!mailSended" class="form-signup" [formGroup]="signUpForm" (ngSubmit)="submit(signUpForm)">
+            <h5 class="text-center">Регистрация</h5>
+            <div class="item">
+                <input formControlName="login" type="text" [ngClass]="{error: !signUpForm.get('login').valid && signUpForm.get('login').touched }" placeholder="Имя*">
+            </div>
+            <div class="item">
+                <input formControlName="password" type="password" [ngClass]="{error: !signUpForm.get('password').valid && signUpForm.get('password').touched }" placeholder="Пароль* (мин. 8 знаков)">
+            </div>
+            <div class="item">
+                <input formControlName="email" type="text" [ngClass]="{error: !signUpForm.get('email').valid && signUpForm.get('email').touched}" placeholder="Почта">
+            </div>
+                <div class="item">
+                <input formControlName="phone" type="text" [ngClass]="{error: !signUpForm.get('phone').valid && signUpForm.get('phone').touched}" placeholder="Телефон">
+            </div>
+
+            <div class="item">
+                <!-- <re-captcha
+                [(ngModel)]="formModel.captcha"
+                name="captcha"
+                required
+                siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU"
+                #captchaControl="ngModel"
+            ></re-captcha> -->
+            </div>
+            <div class="item">
+                <button class="btn yellow" type="submit" [disabled]="!signUpForm.valid">
+                    Зарегистрироваться
+                </button>
+            </div>
+            <div class="item">
+            </div>
+            <div class="item">
+                <a [routerLink]="['','recovery']">Восстановление пароля</a>
+            </div>
+            <div class="item">
+                <a [routerLink]="['', 'login']">Вернуться на страницу входа</a>
+            </div>
+        </form>
+        <div class="form-signup" *ngIf="mailSended">
+            <div class="item">
+                <div class="text-center">На адрес {{email}} отправлено письмо с информацией для подтверждения регистрации</div>
+            </div>
+            <div class="item">
+                <a [routerLink]="['', 'login']">Вернуться на страницу входа</a>
+            </div>
+        </div>
+    </div>
+</div>

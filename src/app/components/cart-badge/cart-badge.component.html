@@ -1,0 +1,21 @@
+<div class="wrapper" routerLink="cart">
+    <a class="block-icon">
+        <svg width="29" height="30" viewBox="0 0 29 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.3519 28.9912C8.84282 28.9912 9.24079 28.5932 9.24079 28.1023C9.24079 27.6113 8.84282 27.2134 8.3519 27.2134C7.86098 27.2134 7.46301 27.6113 7.46301 28.1023C7.46301 28.5932 7.86098 28.9912 8.3519 28.9912Z" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.1298 28.9912C18.6207 28.9912 19.0187 28.5932 19.0187 28.1023C19.0187 27.6113 18.6207 27.2134 18.1298 27.2134C17.6389 27.2134 17.2409 27.6113 17.2409 28.1023C17.2409 28.5932 17.6389 28.9912 18.1298 28.9912Z" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1.24084 10.3245H4.7964L7.17862 22.2267C7.25991 22.636 7.48254 23.0036 7.80755 23.2652C8.13256 23.5268 8.53924 23.6658 8.9564 23.6578H17.5964C18.0136 23.6658 18.4202 23.5268 18.7453 23.2652C19.0703 23.0036 19.2929 22.636 19.3742 22.2267L20.7964 14.7689H5.68529" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <g>
+                <rect x="13" width="16" height="16" rx="8" fill="#F7A600" *ngIf="(totalCount | async) > 0"></rect>
+                <text x="74%" y="33%" dominant-baseline="middle" font-size="10px" font="blisspro" text-anchor="middle" fill="#3F4E54" *ngIf="(totalCount | async) > 0">{{totalCount | async}}</text>
+            </g>   
+        </svg>
+    </a>
+    <a class="block-cart text-bold" routerLink="cart" routerLinkActive="active">
+        Корзина
+    </a>
+    <div class="block-rub text-light">
+        {{totalCount | async}}шт на сумму {{totalSum | async | num}} ₽
+    </div>
+</div>
+
+    

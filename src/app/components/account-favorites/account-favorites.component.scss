@@ -1,0 +1,10 @@
+.favorites-block {
+    display: flex;
+    flex-direction: column;
+
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+}

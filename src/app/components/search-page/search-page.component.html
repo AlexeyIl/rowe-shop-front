@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <app-path-bar [path]="path"></app-path-bar>
+  <div class="container">
+    <div class="search-page-container">
+      <h2>Результаты поиска по запросу "{{searchQuery | async}}"</h2>
+      <h4 *ngIf="(catalog | async)?.length > 0">По вашему запросу найдено {{(catalog | async)?.length}} товаров</h4>
+      <h4 *ngIf="(catalog | async)?.length === 0">По вашему запросу ничего не найдено</h4>
+      <div class="result-block" *ngIf="(catalog | async)?.length > 0">
+        <app-product-badge-second
+        *ngFor="let item of (catalog | async)?.slice(0, toShow)"
+        [item]="item"
+        [isFavorite]="(favorites | async).indexOf(item.code) > -1" 
+        (addOne)="addToCart(item)"
+        (addFavorite)="addToFavorites(item)"
+        (removeFavorite)="removeFromFavorites(item)"
+    ></app-product-badge-second>
+      </div>
+      <div class="button-block" *ngIf="(catalog | async)?.length > 0 && toShow <= (catalog | async)?.length">
+        <button class="btn yellow" (click)="loadMore()">
+          Загрузить еще
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

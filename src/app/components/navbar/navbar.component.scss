@@ -1,0 +1,78 @@
+.navbar {
+    display: grid;
+    grid-template: 
+    "logo phone space badges" 100px / 3fr 3fr 1fr auto;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 50px;
+}
+
+.block {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .badge {
+        display: flex;
+        gap: 3px;
+        cursor: pointer;
+    }
+}
+
+.element {
+    margin: 0 5px;
+
+    * {
+        margin-top: 3px;
+    }
+
+    .call-request {
+        cursor: pointer;
+    }
+}
+
+.logo {
+    height: 100px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.logo-block {
+    grid-area: logo;
+}
+
+.phone {
+    grid-area: phone;
+}
+
+.badges {
+    grid-area: badges;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+        filter: brightness(0.9);
+    }
+}
+
+.mobile-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 25px;
+}
+
+.icon-display {
+    transform: scale(2);
+}
+
+::ng-deep .cdk-overlay-container {
+    position: absolute;
+}
+

@@ -1,0 +1,38 @@
+table {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+.row {
+    cursor: pointer;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.mat-row:hover {
+    background-color: #d4e1e9;
+  }
+
+.mobile-container {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  
+  :last-child:not(.btn-light) {
+    border-bottom: 0px;
+  }
+}
+
+.mobile-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-bottom: 1px solid #647984;
+  margin-top: 0.5rem;
+  padding: 15px;
+}
+
+.mobile-row-item {
+  margin: 0 0.2rem;
+}

@@ -1,0 +1,65 @@
+@import "../../stylings/variables";
+
+.container {
+    min-height: 70vw;
+    margin-top: 2rem;
+}
+
+.header {
+    padding: 0 3rem;
+}
+
+.nav-block {
+    display: flex;
+    padding: 0 3rem;
+
+    .nav-item {
+        display: flex;
+        width: 192px;
+        height: 60px;
+        justify-content: center;
+        align-items: center;
+        background-color: $white-grey;
+        color: $dark-grey;
+        cursor: pointer;
+        gap: 5px;
+
+        &.first {
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        &.last {
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+
+        &.active {
+            background-color: $yellow;
+
+            h4 {
+                color: $white !important;
+            }
+
+            &:hover {
+                background-color: $yellow;
+            }
+    
+        }
+
+        &:hover {
+            background-color: $light-grey;
+        }
+    }
+
+    .svg-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.body {
+    padding: 1.5rem 3rem;
+}
+

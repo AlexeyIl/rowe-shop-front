@@ -1,0 +1,35 @@
+@import "../../stylings/variables";
+
+.personal-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .personal-item {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            color: $grey;
+        }
+    }
+}
+
+.personal-form {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    gap: 1rem;
+
+    .form-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn-group {
+        display: flex;
+        gap: 20px;
+    }    
+}
+
+

@@ -1,0 +1,6 @@
+<app-carousel *ngIf="!(isSlim | async)"></app-carousel>
+<app-mobile-catalog-banner *ngIf="isSlim | async"></app-mobile-catalog-banner>
+<app-company-benefits-badges></app-company-benefits-badges>
+<app-catalog-banners></app-catalog-banners>
+<app-popular-items-bar></app-popular-items-bar>
+<app-request-bar *ngIf="!(isSlim | async)"></app-request-bar>

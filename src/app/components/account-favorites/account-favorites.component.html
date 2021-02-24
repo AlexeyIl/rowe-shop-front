@@ -1,0 +1,11 @@
+<div class="favorites-block">
+    <div class="text-discription">Вы добавили {{ (favorites | async)?.length }} товаров</div>
+    <div class="list">
+        <app-product-badge-second
+        *ngFor="let item of favorites | async"
+        [item]="item"
+        [isFavorite]="true"
+        (removeFavorite)="removeFromFavorites(item)"
+        ></app-product-badge-second>    
+    </div>
+</div>

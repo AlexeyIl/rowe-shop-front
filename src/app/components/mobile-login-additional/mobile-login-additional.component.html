@@ -1,0 +1,105 @@
+<div class="main-block">
+    <ng-container [ngSwitch]="currentTemplate">
+        <ng-template ngSwitchCase="lk">
+            <app-mobile-lk (closeEmitter)="logout()"></app-mobile-lk>
+        </ng-template>
+        <ng-template ngSwitchCase="login">
+            <div>
+                <h2>Вход</h2>
+                <form [formGroup]="loginForm" class="form-block" (ngSubmit)="submitLogin(loginForm)">
+                    <div class="form-item">
+                        <label>Email</label>
+                        <input formControlName="email" type="text" placeholder="Введите e-mail">
+                    </div>
+                    <div class="form-item">
+                        <label>Пароль</label>
+                        <input formControlName="password" type="password" placeholder="Введите пароль">
+                    </div>
+                    <div class="form-item">
+                        <div class="button-block">
+                            <button class="btn yellow" type="submit" [disabled]="!loginForm.valid">Войти</button>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <a class="blue" (click)="switchTemplate('signUp')">
+                            Регистрация
+                        </a>                
+                    </div>
+                    <div class="form-item">
+                        <a class="blue" (click)="switchTemplate('recovery')">
+                            Забыли пароль?
+                        </a>                
+                    </div>
+                </form>
+            </div>        
+        </ng-template>
+        <ng-template ngSwitchCase="recovery">
+            <h2>Восстановление пароля</h2>
+            <form [formGroup]="recoveryForm" class="form-block" (ngSubmit)="submitRecovery(recoveryForm)">
+                <div class="form-item">
+                    <label>E-mail</label>
+                    <input formControlName="recoveryEmail" type="text" placeholder="Введите email">
+                </div>
+                <div class="form-item">
+                    <div class="button-block">
+                        <button class="btn yellow" type="submit" [disabled]="!recoveryForm.valid">Восстановить</button>
+                    </div>
+                </div>    
+                <a class="blue" (click)="switchTemplate('login')">
+                    Вход
+                </a>
+            </form>    
+        </ng-template>
+        <ng-template ngSwitchCase="recoveryComplete">
+            <h2>Восстановление пароля</h2>
+            <div>
+                Мы отправили ссылку для восстановления пароля на укзананный e-mail
+            </div>
+            <div>
+                <a class="blue" (click)="switchTemplate('login')">
+                    Вход
+                </a>
+            </div>            
+        </ng-template>
+        <ng-template ngSwitchCase="signUp">
+            <h2>Регистрация</h2>
+            <form [formGroup]="signUpForm" class="form-block" (ngSubmit)="submitSignUp(signUpForm)">
+                <div class="form-item">
+                    <label>Имя</label>
+                    <input formControlName="registrationName" type="text" placeholder="Введите имя">
+                </div>
+                <div class="form-item">
+                    <label>Пароль(минимум 8 занков)</label>
+                    <input formControlName="registrationPassword" type="password" placeholder="Введите пароль">
+                </div>
+                <div class="form-item">
+                    <label>E-mail</label>
+                    <input formControlName="registrationEmail" type="text" placeholder="Введите e-mail">
+                </div>
+                <div class="form-item">
+                    <label>Телефон(формат +70001112233)</label>
+                    <input formControlName="registrationPhone" type="text" placeholder="Введите номер телефона">
+                </div>
+                <div class="form-item">
+                    <div class="button-block">
+                        <button class="btn yellow" type="submit" [disabled]="!signUpForm.valid">Зарегистрироваться</button>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <a class="blue" (click)="switchTemplate('login')">
+                        Вход
+                    </a>
+                </div>
+            </form>            
+        </ng-template> 
+        <ng-template ngSwitchCase="signUpComplete">
+            <h2>Спасибо за регистрацию</h2>
+            <div>
+                Мы отправили письмо для подтверждения регистрации на указанный e-mail
+            </div>
+            <a class="blue" (click)="switchTemplate('login')">
+                Вход
+            </a>
+        </ng-template>  
+    </ng-container>
+</div>

@@ -1,0 +1,17 @@
+<div class="wrapper">
+    <div class="container">
+        <div class="title text-bold">
+            Популярные товары
+        </div>
+        <div class="block" [ngClass]="{slim: isSlim | async}">
+            <app-product-badge-second 
+            *ngFor="let item of popularItems | async"
+            [item]="item"
+            [isFavorite]="(favorites | async).indexOf(item.code) > -1" 
+            (addOne)="addToCart(item)"
+            (addFavorite)="addToFavorites(item)"
+            (removeFavorite)="removeFromFavorites(item)"
+            ></app-product-badge-second>
+        </div>
+    </div>
+</div>

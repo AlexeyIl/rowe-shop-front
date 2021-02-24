@@ -1,0 +1,138 @@
+<div class="wrapper">
+  <app-path-bar [path]="path"></app-path-bar>
+  <div class="wrapper">
+    <div class="container">
+      <ng-template *ngTemplateOutlet="(isSlim | async) ? slim : thick"></ng-template>
+    </div>
+  </div>
+  <ng-template #thick>
+    <div class="main" *ngIf="(cart | async).length > 0">
+      <div>
+        <h2>Корзина</h2>
+        <div class="cart-block">
+          <div class="left-block">
+            <div class="item" *ngFor="let item of cart | async">
+              <div class="img flex-center">
+                <img src="assets/img/small/{{item.product.img}}">
+              </div>
+              <div class="info">
+                <div class="text-discription">Артикул: {{item.product.code}}</div>
+                <a [routerLink]="['/catalog', item.product.code]"><h2>{{item.product.name}} {{item.product.pack}}л</h2></a>
+                <div class="control">
+                  <div class="control-item" *ngIf="(favorites | async).indexOf(item.product.code) === -1">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18.4444 20L12.2222 15.5556L6 20V5.77778C6 5.30628 6.1873 4.8541 6.5207 4.5207C6.8541 4.1873 7.30628 4 7.77778 4H16.6667C17.1382 4 17.5903 4.1873 17.9237 4.5207C18.2571 4.8541 18.4444 5.30628 18.4444 5.77778V20Z" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <div class="text-blue" (click)="addToFavorites(item)">Добавить в избранное</div>                      
+                  </div>
+                  <div class="control-item" *ngIf="(favorites | async).indexOf(item.product.code) > -1">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#e4170f" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18.4444 20L12.2222 15.5556L6 20V5.77778C6 5.30628 6.1873 4.8541 6.5207 4.5207C6.8541 4.1873 7.30628 4 7.77778 4H16.6667C17.1382 4 17.5903 4.1873 17.9237 4.5207C18.2571 4.8541 18.4444 5.30628 18.4444 5.77778V20Z" stroke=" #e4170f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <div class="text-blue" (click)="removeFromFavorites(item)">Продукт уже в избранном</div>                      
+                  </div>
+                  <div class="control-item" (click)="delete(item)">
+                    <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 4.59998H2.8H17.2" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M5.4998 4.6V2.8C5.4998 2.32261 5.68945 1.86477 6.02701 1.52721C6.36458 1.18964 6.82242 1 7.2998 1H10.8998C11.3772 1 11.835 1.18964 12.1726 1.52721C12.5102 1.86477 12.6998 2.32261 12.6998 2.8V4.6M15.3998 4.6V17.2C15.3998 17.6774 15.2102 18.1352 14.8726 18.4728C14.535 18.8104 14.0772 19 13.5998 19H4.5998C4.12242 19 3.66458 18.8104 3.32701 18.4728C2.98945 18.1352 2.7998 17.6774 2.7998 17.2V4.6H15.3998Z" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <div class="text-blue">Удалить</div>                      
+                  </div>
+                </div>
+              </div>
+              <div class="price">
+                <h2>{{item.product.price | num}} ₽</h2>
+              </div>
+              <div class="counter">
+                  <button class="btn round" (click)="remove(item)">-</button>
+                  <div class="flex-center">{{item.count}}</div>
+                  <button class="btn round" (click)="add(item)">+</button>   
+              </div>
+            </div>
+          </div>
+          <div class="right-block">
+            <div class="item up">
+              <div class="line up">
+                <h3>Ваша корзина</h3>
+                <p class="text-discription">{{ totalQuantity | async }} шт</p>
+              </div>
+              <div class="line">
+                <h4>Товары</h4>
+                <h4></h4>
+              </div>
+              <div class="line">
+                <h4>Скидка</h4>
+                <h4></h4>
+              </div>
+            </div>
+            <div class="item down">
+              <div class="line">
+                <h3>Общая стоимость</h3>
+                <h3>{{ sum | async | num}} ₽</h3>
+              </div>
+              <div class="line checkout">
+                <button class="btn red" (click)="checkout()" [disabled]="(cart | async)?.length < 1">Перейти к оформлению</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main flex-center" *ngIf="(cart | async).length === 0">
+      Корзина пуста
+    </div>
+  </ng-template>
+
+  <ng-template #slim>
+    <div>
+      <div class="mobile-block">
+        <h2>Корзина</h2>
+        <div class="mobile-empty" *ngIf="(cart | async).length === 0">
+          <h4>Корзина пуста</h4>
+        </div>
+        <div class="mobile-cart-block" *ngIf="(cart | async).length > 0">
+          <div class="mobile-cart-item" *ngFor="let item of cart | async">
+            <div class="mobile-item-image" [routerLink]="['/catalog', item.product.code]">
+              <img src="assets/img/small/{{item.product.img}}">
+            </div>
+            <div class="mobile-item-info">
+              <h4 [routerLink]="['/catalog', item.product.code]">{{item.product.name}} {{item.product.pack}}л</h4>
+              <span class="text-grey">Артикул: {{item.product.code}}</span>
+              <span>Цена: {{item.product.price}}</span>
+              <span>Количество:</span>
+              <div class="counter">
+                <button class="btn round" (click)="remove(item)">-</button>
+                <div class="flex-center">{{item.count}}</div>
+                <button class="btn round" (click)="add(item)">+</button>
+              </div>
+              <h4>Сумма: {{(item.product.price * item.count) | num}} ₽</h4>
+              <div class="mobile-control">
+                <span class="text-blue" (click)="delete(item)">Удалить</span>
+                <div class="mobile-control-item" *ngIf="(favorites | async).indexOf(item.product.code) === -1">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.4444 20L12.2222 15.5556L6 20V5.77778C6 5.30628 6.1873 4.8541 6.5207 4.5207C6.8541 4.1873 7.30628 4 7.77778 4H16.6667C17.1382 4 17.5903 4.1873 17.9237 4.5207C18.2571 4.8541 18.4444 5.30628 18.4444 5.77778V20Z" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div class="text-blue" (click)="addToFavorites(item)">Добавить в избранное</div>                      
+                </div>
+                <div class="mobile-control-item" *ngIf="(favorites | async).indexOf(item.product.code) > -1">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#e4170f" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.4444 20L12.2222 15.5556L6 20V5.77778C6 5.30628 6.1873 4.8541 6.5207 4.5207C6.8541 4.1873 7.30628 4 7.77778 4H16.6667C17.1382 4 17.5903 4.1873 17.9237 4.5207C18.2571 4.8541 18.4444 5.30628 18.4444 5.77778V20Z" stroke=" #e4170f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div class="text-blue" (click)="removeFromFavorites(item)">Продукт уже в избранном</div>                      
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="checkout-block">
+        <div class="checkout-item">
+          <h3>{{ sum | async | num}} ₽</h3>
+          <h5>{{ totalQuantity | async }}шт</h5>
+        </div>
+        <div>
+          <button class="btn yellow" (click)="checkout()" [disabled]="(cart | async)?.length < 1">Перейти к оформлению</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>

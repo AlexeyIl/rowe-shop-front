@@ -1,0 +1,11 @@
+.main-block {
+    min-height: 100vh;
+    
+    .mobile-bottom-bar {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        z-index: 51;
+    }
+}
+

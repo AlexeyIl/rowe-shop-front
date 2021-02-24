@@ -1,0 +1,17 @@
+.search-page-container {
+    min-height: 80vh;
+    padding: 0 3rem;
+
+    .result-block {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 1319px;
+    }
+    
+    .button-block {
+        display: flex;
+        justify-content: center;
+        margin: 2rem 0;
+    }
+}

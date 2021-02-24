@@ -1,0 +1,56 @@
+<div class="modal"
+@open
+[@openClose]="isOpen ? 'open' : 'closed'"
+>
+    <div class="wrapper">
+        <div class="block" *ngIf="!isComplete">
+            <div class="header">
+                <h2>Заказать обратный звонок</h2>
+                <div class="close-btn" (click)="close()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6 6L18 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>                        
+                </div>
+            </div>
+            <div class="body">
+                <p class="p1">
+                    Оставьте свои контактные данные, чтобы менеджер связался с вами по интересующему вопросу
+                </p>
+                <form [formGroup]="callReqForm" class="form-block" (ngSubmit)="submit()">
+                    <div class="form-item">
+                        <label>Имя</label>
+                        <input formControlName="name" placeholder="Введите ваше имя" type="text">
+                    </div>
+                    <div class="form-item">
+                        <label>Телефон</label>
+                        <input formControlName="phone" placeholder="Введите номер телефона" type="text">
+                    </div>
+                    <div class="form-checkbox">
+                        <input formControlName="personal" type="checkbox">
+                        <div class="checkbox-text">
+                            С
+                            <a class="blue" [routerLink]="['/conf']" (click)="navigateToConf()">политикой конфиденциальности</a>
+                            ознакомлен и согласен
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button type="submit" class="btn yellow" [disabled]="!callReqForm.valid">Заказать звонок</button>
+                    </div>        
+                </form>
+            </div>
+        </div>
+        <div class="block" *ngIf="isComplete">
+            <div class="header">
+                <h2>Спасибо за обращение!</h2>
+            </div>
+            <div class="body">
+                <p class="p1">Мы приняли вашу заявку на обратный звонок.</p>
+                <p class="p1">В ближайщее время наш менеджер свяжется с вами</p>
+            </div>
+            <div class="buttons">
+                <button class="btn yellow" (click)="close()">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>

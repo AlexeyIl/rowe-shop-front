@@ -1,0 +1,52 @@
+@import "../../stylings/variables";
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 360px;
+    padding: 0 24px;
+    margin: 0 auto;
+    width: 1300px;
+
+    .menu-item {
+        width: 473px;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        cursor: pointer;
+
+        .svg-block {
+            width: 60px;
+            height: 40px;
+        }
+
+        .text-block {
+            margin-left: 15px;
+        }
+    }
+}
+
+.dropdown-container {
+    background-color: $white-grey;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.3);
+}
+
+.dropdown-wrapper {
+    position: absolute;
+    top: 160px;
+    z-index: 3;
+    width: 100%;
+    overflow: hidden;
+    display: none;
+
+    &.active {
+        display: inline;
+    }
+}
+
+.invisible-bottom {
+    height: 60px;
+    opacity: 0;
+}

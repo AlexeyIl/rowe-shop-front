@@ -1,0 +1,162 @@
+<div class="modal"
+@open
+[@openClose]="isOpen ? 'open' : 'closed'"
+>
+    <div class="wrapper">
+        <div class="container">
+            <div [ngSwitch]="currentModal">
+                <ng-template ngSwitchCase="login">
+                    <div class="header">
+                        <div class="header-text">
+                            <h2>Вход</h2>
+                            <a class="blue" (click)="changeModal('registration')">Регистрация</a>
+                        </div>
+                        <div class="close-icon" (click)="close()">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6 6L18 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>                        
+                        </div>    
+                    </div>
+                    <div>
+                        <form class="form-group" [formGroup]="loginForm" (ngSubmit)="submitLogin(loginForm)">
+                            <div class="form-item">
+                                <label [ngClass]="{error: isError}">
+                                    Логин
+                                </label>
+                                <input placeholder="Введите e-mail" type="email" formControlName="email" [ngClass]="{error: isError}" (click)="cleanError()">
+                            </div>
+                            <div class="form-item">
+                                <label [ngClass]="{error: isError}">
+                                    Пароль
+                                </label>
+                                <input placeholder="Введите пароль" type="password" formControlName="password" [ngClass]="{error: isError}" (click)="cleanError()">
+                            </div>
+                            <div class="bottom-form-item">
+                                <a class="blue" (click)="changeModal('recovery')">Забыли пароль?</a>
+                                <p class="error" *ngIf="isError">
+                                    Неверные данные
+                                </p>
+                            </div>
+                            <div>
+                                <button class="btn yellow" type="submit" [disabled]="!loginForm.valid">Войти</button>
+                            </div>
+                        </form>
+                    </div>    
+                </ng-template>
+                <ng-template ngSwitchCase="registration">
+                    <div class="header">
+                        <div class="header-text">
+                            <h2>Регистрация</h2>
+                            <a class="blue" (click)="changeModal('login')">Войти</a>    
+                        </div>
+                        <div class="close-icon" (click)="close()">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6 6L18 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>                        
+                        </div>    
+                    </div>
+                    <div>
+                        <form class="form-group" [formGroup]="registrationForm" (ngSubmit)="submitRegistration(registrationForm)">
+                            <div class="form-item">
+                                <label>
+                                    E-mail
+                                </label>
+                                <input placeholder="Введите e-mail" type="email" formControlName="registrationEmail" [ngClass]="{error: isError}" (click)="cleanError()">
+                            </div>
+                            <div class="form-item">
+                                <label>
+                                Имя
+                                </label>
+                                <input placeholder="Введите имя" type="text" formControlName="registrationLogin" [ngClass]="{error: isError}" (click)="cleanError()">
+                            </div>
+                            <div class="form-item">
+                                <label>
+                                    Пароль(мининмум 8 символов)
+                                </label>
+                                <input placeholder="Введите пароль" type="password" formControlName="registrationPassword" [ngClass]="{error: isError}" (click)="cleanError()">
+                            </div>
+                            <div class="form-item">
+                                <label>
+                                    Телефон(формат: +79001112233)
+                                </label>
+                                <input placeholder="Введите номер телефона" type="text" formControlName="registrationPhone" [ngClass]="{error: isError}" (click)="cleanError()">
+                            </div>
+                            <div class="bottom-form-item">
+                                <p class="error" *ngIf="isError">
+                                    Неверные данные
+                                </p>
+                            </div>                     
+                            <div>
+                                <button class="btn yellow" type="submit" [disabled]="!registrationForm.valid">Зарегистрироваться</button>
+                            </div>
+                        </form>
+                    </div>    
+                </ng-template>
+                <ng-template ngSwitchCase="recovery">
+                    <div class="header">
+                        <h2>Восстановление пароля</h2>
+                        <div class="close-icon" (click)="close()">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6 6L18 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>                        
+                        </div>
+                    </div>
+                    <div>
+                        Введите e-mail, указанные при регистрации. Мы отправим ссылку для восстановления пароля
+                    </div>
+                    <div>
+                        <form class="form-group" [formGroup]="recoveryForm" (ngSubmit)="submitRecovery(recoveryForm)">
+                            <div class="form-item">
+                                <label [ngClass]="{error: isError}">
+                                    E-mail
+                                </label>
+                                <input placeholder="Введите e-mail" type="email" formControlName="recoveryEmail" [ngClass]="{error: isError}" (click)="cleanError()">
+                            </div>
+                            <div class="bottom-form-item">
+                                <a class="blue" (click)="changeModal('login')">Вход</a>
+                                <p class="error" *ngIf="isError">
+                                    Пользователь не найден
+                                </p>
+                            </div> 
+                            <div>
+                                <button class="btn yellow" type="submit" [disabled]="!recoveryForm.valid">Отправить</button>
+                            </div>
+                        </form>
+                    </div>
+                </ng-template>
+                <ng-template ngSwitchCase="email">
+                    <div class="header">
+                        <h2>Спасибо за регистрацию</h2>
+                        <div class="close-icon" (click)="close()">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6 6L18 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>                        
+                        </div>    
+                    </div>
+                    <div>
+                        Мы отправили письмо для подтверждения регистрации на указанные e-mail
+                    </div>
+                </ng-template>
+                <ng-template ngSwitchCase="recovery-sended">
+                    <div class="header">
+                        <h2>Восстановление пароля</h2>
+                        <div class="close-icon" (click)="close()">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6 6L18 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>                        
+                        </div>    
+                    </div>
+                    <div>
+                        Мы отправили ссылку для восстановления пароля на укзананный e-mail
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
+

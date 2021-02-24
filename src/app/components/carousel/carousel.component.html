@@ -1,0 +1,44 @@
+<!-- <div class="wrapper">
+    <div class="container">
+        <img src="assets/carousel/1.jpg" style="display: block; width: 100%; height: 400px; object-fit: cover;margin-top: 1rem;margin-bottom: 1rem;">
+    </div>
+</div> -->
+<!-- <img src="assets/carousel/2.jpg" style="display: block; width: 100%;">
+<img src="assets/carousel/3.jpg" style="display: block; width: 100%;"> -->
+<div class="wrapper">
+    <div class="container">
+        <ngu-carousel #myCarousel class="carousel" [inputs]="carouselBanner" [dataSource]="images">
+            <ngu-item NguCarouselItem class="banner" *nguCarouselDef="let item; let i = index">
+                <img src="{{item}}">
+            </ngu-item>
+            <button NguCarouselPrev class="leftRs">
+                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.5">
+                    <path d="M32.2786 40.446L17.2786 25.446L32.2786 10.446" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                </svg>                    
+            </button>
+            <button NguCarouselNext class="rightRs">
+                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.5">
+                    <path d="M17.7214 40.446L32.7214 25.446L17.7214 10.446" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                </svg>                    
+            </button>
+                <div NguCarouselPoint class="pointers">
+                    <div class="pointer" *ngFor="let item of myCarousel.pointNumbers; let i = index" (click)="myCarousel.moveTo(i)">
+                        <svg width="31" height="4" viewBox="0 0 31 4" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="!(i == myCarousel.activePoint)">
+                            <g opacity="0.25">
+                            <rect width="31" height="4" rx="2" fill="#3F4E54"/>
+                            </g>
+                        </svg>
+                        <svg width="31" height="4" viewBox="0 0 31 4" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="i == myCarousel.activePoint">
+                            <g opacity="0.5">
+                            <rect width="31" height="4" rx="2" fill="#3F4E54"/>
+                            </g>
+                        </svg>         
+                    </div>
+                </div>
+        </ngu-carousel>
+    </div>
+</div>

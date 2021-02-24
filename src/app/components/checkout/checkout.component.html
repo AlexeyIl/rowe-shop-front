@@ -1,0 +1,95 @@
+<div class="wrapper">
+  <app-path-bar [path]="path"></app-path-bar>
+  <div class="container" *ngIf="((cart | async).length > 0) && !orderComplete" [ngClass]="{slim: (isSlim | async)}">
+    <h1>Оформление заказа</h1>
+    <mat-vertical-stepper class="stepper" linear #stepper>
+      <mat-step [stepControl]="personalForm" [editable]="isEditable">
+        <form [formGroup]="personalForm" class="client-form">
+          <ng-template matStepLabel><h3>Контактная информация</h3></ng-template>
+          <div class="client-form-item">
+            <label>Имя</label>
+            <input class="margin-top" formControlName="name" type="text" placeholder="Имя*" />
+          </div>
+          <div class="client-form-item">
+            <label>Телефон</label>
+            <input class="margin-top" formControlName="phone" type="text" placeholder="Телефон*" />
+          </div>
+          <div class="client-form-item">
+            <label>E-mail</label>
+            <input class="margin-top" formControlName="mail" type="text" placeholder="E-mail*" />
+          </div>
+          <div class="client-form-checkbox">
+            <input formControlName="personal" class="personal-checkbox" type="checkbox" />
+            <label class="conf" *ngIf="!(isSlim | async)">
+              <p>С</p>
+              <a [routerLink]="['/conf']" class="blue">политикой конфиденциальности</a>
+              <p>ознакомлен и согласен</p>
+            </label>
+            <label class="conf" *ngIf="isSlim | async">
+              <a [routerLink]="['/conf']" class="blue">С политикой конфиденциальности ознакомлен и согласен</a>
+            </label>
+
+          </div>
+          <div class="buttons-group">
+            <button class="btn yellow button-group-item" (click)="stepper.next()" [disabled]="!personalForm.valid">Далее</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="deliveryForm" [editable]="isEditable">
+        <form [formGroup]="deliveryForm" class="client-form">
+          <ng-template matStepLabel><h3>Доставка</h3></ng-template>
+          <div class="radio">
+            <div class="radio-item">
+              <input formControlName="delivery" (click)="changeDelivery(false)" value="pickup" type="radio"
+              checked="checked" name="delivery" />
+              <label>Самовывоз
+              </label>
+            </div>
+            <div class="radio-item">
+              <input formControlName="delivery" (click)="changeDelivery(true)" value="delivery" type="radio"
+              name="delivery" />
+              <label>Доставка
+              </label>
+            </div>
+          </div>
+          <div class="client-form-item" *ngIf="deliveryForm.get('delivery').value === 'delivery'">
+            <label>Адрес Доставки</label>
+            <input formControlName="adress" type="text" placeholder="Адрес доставки" />
+          </div>
+          <div class="buttons-group">
+            <button class="btn yellow button-group-item" (click)="stepper.previous()">Назад</button>
+            <button class="btn yellow button-group-item" (click)="stepper.next()" [disabled]="!deliveryForm.valid">Далее</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="payForm" [editable]="isEditable">
+        <form [formGroup]="payForm" class="client-form">
+          <ng-template matStepLabel><h3>Оплата</h3></ng-template>
+          <div class="radio">
+            <div class="radio-item">
+              <input formControlName="payment" value="cash" type="radio" checked="checked" name="payment" />
+              <label>Наличными
+              </label>
+            </div>
+            <div class="radio-item">
+              <input formControlName="payment" value="card" type="radio" name="payment" />
+              <label>Картой
+              </label>
+            </div>
+          </div>
+          <div class="buttons-group">
+            <button class="btn yellow button-group-item" (click)="stepper.previous()">Назад</button>
+            <button class="btn yellow button-group-item" (click)="submit()" [disabled]="!payForm.valid">Подтвердить</button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-vertical-stepper>
+  </div>
+</div>
+
+<div class="wrapper" *ngIf="modalCompleteIsOpen">
+  <div class="container">
+    <app-uni-modal [context]="modalCompleteText" (closeModal)="closeModal()">
+    </app-uni-modal>
+  </div>
+</div>

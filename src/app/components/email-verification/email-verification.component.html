@@ -1,0 +1,6 @@
+<div class="wrapper">
+    <div class="container flex-center" *ngIf="user | async; let u">
+        <h5>{{u.email}} подтвержден</h5>
+        <a [routerLink]="['']">Вернуться на главную</a>
+    </div>    
+</div>

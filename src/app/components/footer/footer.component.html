@@ -1,0 +1,109 @@
+<footer class="footer-container">
+  <div class="footer-bar" [ngClass]="{slim: isSlim | async}">
+    <div class="footer-column">
+      <div>
+        <svg width="157" height="37" viewBox="0 0 157 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0)">
+            <path
+              d="M0.899938 36.4H10.3999L12.6999 23.2H14.0999L19.3999 36.4H29.9999L23.3999 22.2C25.5999 21.4 27.4999 20 28.7999 18.3C30.4999 16 30.9999 13.5 30.9999 11.7C30.9999 8.5 29.4999 6.1 27.0999 4.5C24.7999 3 21.7999 2.6 17.4999 2.6H0.299938C-6.23465e-05 2.5 -0.100062 3 0.199938 3.2L5.49994 5.5C5.99994 5.6 6.19994 6.1 6.09994 6.5L0.899938 36.4ZM20.3999 15.9C19.4999 16.7 18.0999 17.1 16.4999 17.1H13.6999L15.0999 9.3H17.0999C18.1999 9.3 19.4999 9.4 20.4999 10.1C21.3999 10.7 21.7999 11.6 21.7999 12.8C21.7999 14.1 21.2999 15.1 20.3999 15.9Z"
+              fill="#90A4AE" />
+            <path
+              d="M75.6 36.4H85.5C85.5 36.4 92.1 22.4 93.4 19.4H93.5C93.7 22.3 95.2 36.4 95.2 36.4H105.3L121.7 2.6H111.9C111.9 2.6 103.7 20.3 102.4 23.3H102.3C102.1 20.4 100.2 2.6 100.2 2.6H93.1C93.1 2.6 84.7 20.5 83.5 23.3H83.4C83.2 20.5 81.6 2.6 81.6 2.6H66.1C65.7 2.6 65.6 3.1 66 3.2L71.3 5.5C71.8 5.6 72 6.1 72 6.5L75.6 36.4Z"
+              fill="#90A4AE" />
+            <path
+              d="M52.2999 2C46.7999 2 41.9999 4.2 38.5999 7.9C35.0999 11.8 33.5999 16.8 33.5999 21.1C33.5999 31 41.1999 36.8 50.1999 36.8C55.6999 36.8 60.4999 34.6 63.8999 30.9C67.3999 27 68.8999 22 68.8999 17.7C68.8999 7.9 61.3999 2.1 52.2999 2ZM56.4999 25.7C55.0999 27.3 53.0999 28.5 50.4999 28.5C45.8999 28.5 43.2999 24.8 43.2999 20.5C43.2999 17.7 44.3999 14.9 45.8999 13.1C47.2999 11.5 49.2999 10.3 51.8999 10.3C56.4999 10.3 59.0999 14 59.0999 18.3C59.1999 21.2 57.9999 24 56.4999 25.7Z"
+              fill="#90A4AE" />
+            <path
+              d="M144.7 10.7L146.1 2.5H124.5L118.5 36.4H140.6L142.1 28.2H129.7L130.6 23.3H140.6L142 15.6H131.9L132.8 10.7H144.7Z"
+              fill="#90A4AE" />
+            <path
+              d="M151 2.8C151 1.2 152.2 0 153.8 0C155.4 0 156.6 1.2 156.6 2.8C156.6 4.4 155.4 5.6 153.8 5.6C152.2 5.6 151 4.4 151 2.8ZM156.1 2.8C156.1 1.5 155.2 0.6 153.9 0.6C152.6 0.6 151.7 1.6 151.7 2.8C151.7 4.1 152.6 5 153.9 5C155.2 5 156.1 4 156.1 2.8ZM153.8 3.2H153.5V4.3H152.8V1.3H154C154.6 1.3 155.2 1.6 155.2 2.3C155.2 2.7 155 3 154.6 3.2L155.3 4.4H154.4L153.8 3.2ZM153.8 2.7C154.1 2.7 154.3 2.6 154.3 2.3C154.3 2 154.1 1.9 153.8 1.9H153.4V2.7H153.8Z"
+              fill="#90A4AE" />
+          </g>
+          <defs>
+            <clipPath id="clip0">
+              <rect width="156.6" height="36.9" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+      </div>
+      <div class="text-bold-light">
+        Официальный интернет магазин
+      </div>
+      <div class="text-light margin-top">
+        © 2020 ООО “Евро паркинг Запад”
+        Все права защищены.
+      </div>
+    </div>
+    <div class="footer-column">
+      <div class="footer-column-item text-bold">
+          Покупателям
+        </div>
+      <a class="footer-column-item text-light" [routerLink]="['/catalog']">
+          Каталог продукции
+      </a>
+      <a class="footer-column-item text-light" [routerLink]="['/podbor']">
+          Подбор масла
+      </a>
+      <a class="footer-column-item text-light" [routerLink]="['/discount']">
+          Акции и скидки
+      </a>
+      <a class="footer-column-item text-light" [routerLink]="['/dostavka']">
+          Доставка и оплата
+      </a>
+    </div>
+    <div class="footer-column">
+      <div class="footer-column-item text-bold">
+          Информация
+        </div>
+      <a class="footer-column-item text-light" [routerLink]="['/about']">
+          О компании ROWE
+        </a>
+      <a class="footer-column-item text-light" [routerLink]="['/opt']">
+          Оптовым покупателям
+        </a>
+      <a class="footer-column-item text-light" [routerLink]="['conf']">
+          Политика конфиденциальности
+        </a>
+      <a class="footer-column-item text-light" [routerLink]="['/contacts']">
+          Контакты
+        </a>
+    </div>
+    <div class="footer-column">
+      <div class="footer-column-item text-bold">Контакты</div>
+      <div class="footer-column-item text-bold">
+        <div class="flex-center">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.9638 16.4765V19.1862C20.9648 19.4377 20.9133 19.6867 20.8125 19.9172C20.7117 20.1477 20.5639 20.3546 20.3786 20.5247C20.1932 20.6947 19.9743 20.8242 19.736 20.9048C19.4978 20.9854 19.2452 21.0153 18.9947 20.9927C16.2153 20.6907 13.5455 19.7409 11.1997 18.2197C9.01735 16.8329 7.16706 14.9827 5.78028 12.8003C4.25379 10.4439 3.30381 7.76107 3.00733 4.96916C2.98476 4.71938 3.01444 4.46764 3.09449 4.22997C3.17454 3.99229 3.30321 3.77389 3.47229 3.58866C3.64137 3.40343 3.84717 3.25544 4.07658 3.15411C4.30599 3.05278 4.55399 3.00033 4.80478 3.00009H7.51451C7.95286 2.99578 8.37782 3.151 8.71019 3.43684C9.04255 3.72267 9.25964 4.11961 9.32099 4.55367C9.43536 5.42084 9.64747 6.27229 9.95326 7.09178C10.0748 7.41507 10.1011 7.76642 10.0291 8.1042C9.95701 8.44198 9.78965 8.75203 9.5468 8.99762L8.39969 10.1447C9.6855 12.406 11.5578 14.2784 13.8191 15.5642L14.9663 14.4171C15.2118 14.1742 15.5219 14.0069 15.8597 13.9348C16.1975 13.8628 16.5488 13.8891 16.8721 14.0106C17.6916 14.3164 18.543 14.5285 19.4102 14.6429C19.849 14.7048 20.2497 14.9258 20.5361 15.2639C20.8226 15.6019 20.9748 16.0335 20.9638 16.4765Z" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        8(800)888-80-80</div>
+      <div class="footer-column-item text-light margin-left">Ежеденевно 10:00 -19:00</div>
+      <div class="footer-column-item text-blue margin-left" (click)="callReqModal()">Заказать звонок</div>
+      <div class="footer-column-item text-bold margin-top">
+        <div class="flex-center">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.399 10.4825C20.399 16.5916 12.5445 21.828 12.5445 21.828C12.5445 21.828 4.68994 16.5916 4.68994 10.4825C4.68994 8.39938 5.51747 6.40155 6.99048 4.92853C8.4635 3.45552 10.4613 2.62799 12.5445 2.62799C14.6276 2.62799 16.6255 3.45552 18.0985 4.92853C19.5715 6.40155 20.399 8.39938 20.399 10.4825Z" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.5445 13.1007C13.9904 13.1007 15.1626 11.9285 15.1626 10.4825C15.1626 9.03655 13.9904 7.86435 12.5445 7.86435C11.0985 7.86435 9.92627 9.03655 9.92627 10.4825C9.92627 11.9285 11.0985 13.1007 12.5445 13.1007Z" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        Москва, ул. Пушкина, д.3</div>
+    </div>
+    <div class="footer-column">
+      <div class="footer-column-item text-bold">Мы принимаем к оплате</div>
+      <div class="footer-column-item flex-center">
+          <svg width="166" height="24" viewBox="0 0 166 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <rect width="166" height="24" fill="url(#pattern0)"/>
+          <defs>
+          <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+          <use xlink:href="#image0" transform="scale(0.0060241 0.0416667)"/>
+          </pattern>
+          <image id="image0" width="166" height="24" xlink:href="data:image/png;base64,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"/>
+          </defs>
+          </svg>
+        </div>
+    </div>
+  </div>
+</footer>
+
+<app-call-request-modal *ngIf="callReqIsOpen" (closeModal)="callReqModal()"></app-call-request-modal>

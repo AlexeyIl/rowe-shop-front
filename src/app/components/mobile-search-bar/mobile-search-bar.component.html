@@ -1,0 +1,16 @@
+<div class="search-bar-block" [ngClass]="{active: helpIsOpen}">
+    <div class="input-block">
+        <input #search (focus)="inputFocus()" type="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="Искать в магазине">
+        <div>
+            <button class="btn yellow" *ngIf="helpIsOpen" (click)="cancelHelp()">Отмена</button>
+        </div>
+    </div>
+    <div class="help-block" *ngIf="helpList?.length > 0">
+        <a *ngIf="isLoading">
+            Загрузка...
+        </a>
+        <a class="help-block-item" *ngFor="let item of helpList" (click)="navigateTo(item)">
+            {{item.name}} - {{item.price | num}}Р
+        </a>
+    </div>
+</div>

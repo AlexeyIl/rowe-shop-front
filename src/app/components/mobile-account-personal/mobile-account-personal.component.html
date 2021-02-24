@@ -1,0 +1,87 @@
+<h3>Учетные данные</h3>
+<div class="body-block">
+    <ng-container [ngSwitch]="currentTemplate">
+        <ng-template ngSwitchCase="info" *ngIf="user">
+            <div class="personal-item">
+                <label class="text-discription">
+                    Имя
+                </label>
+                <label class="text-big">
+                    {{user.name}}
+                </label>
+            </div>
+            <div class="divider"></div>
+            <div class="personal-item">
+                <label class="text-discription">
+                   E-mail 
+                </label>
+                <label class="text-big">
+                    {{user.email}}
+                </label>
+            </div>
+            <div class="divider"></div>
+            <div class="personal-item">
+                <label class="text-discription">
+                    Телефон
+                </label>
+                <label class="text-big">
+                    {{user.phone}}
+                </label>
+            </div>
+            <div class="divider"></div>
+            <div class="personal-item">
+                <label class="text-discription">
+                    Адрес
+                </label>
+                <label class="text-big">
+                    {{user.adress}}
+                </label>
+            </div>
+            <div class="divider"></div>
+            <div class="personal-item">
+                <label class="text-discription">
+                    Пароль
+                </label>
+            </div>
+            <div class="personal-item">
+                <div class="flex-center">
+                    <button class="btn grey" (click)="changeTemplate('edit')">
+                        Редактировать данные
+                    </button>
+                </div>
+            </div>        
+        </ng-template>
+        <ng-template ngSwitchCase="edit">
+            <form [formGroup]='personalForm' class="form-block" (ngSubmit)="personalSubmit()">
+                <div class="personal-item">
+                    <label>Имя</label>
+                    <input formControlName="name" type="text" placeholder="Имя">
+                </div>
+                <div class="personal-item">
+                    <label>E-mail</label>
+                    <input formControlName="email" type="email" placeholder="Почта">
+                </div>
+                <div class="personal-item">
+                    <label>Телефон</label>
+                    <input formControlName="phone" type="text" placeholder="Телефон">
+                </div>
+                <div class="personal-item">
+                    <label>Адрес</label>
+                    <input formControlName="adress" type="text" placeholder="Адрес">
+                </div>
+                <div class="personal-item">
+                    <label>Новый пароль</label>
+                    <input formControlName="password" type="password" placeholder="Новый пароль">
+                </div>
+                <div class="personal-item">
+                    <div class="flex-center btn-group">
+                        <button class="btn grey" (click)="changeTemplate('info')">Отмена</button>
+                        <button class="btn yellow" type="submit" [disabled]="!isPersonalFormChange">
+                            Сохранить
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </ng-template>
+    </ng-container>
+</div>

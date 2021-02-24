@@ -1,0 +1,45 @@
+@import "../../stylings//variables";
+
+.carousel {
+    height: 400px;
+    margin: 1rem 3rem;
+}
+
+.leftRs {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  height: 50px;
+  background: none;
+  left: 15px;
+  border: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.rightRs {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  height: 50px;
+  right: 15px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.pointers {
+    position: absolute;
+    bottom: 22px;
+    left: 120px;
+    display: flex;
+    gap: 0.5rem;
+
+    .pointer {
+        cursor: pointer;
+    }
+}

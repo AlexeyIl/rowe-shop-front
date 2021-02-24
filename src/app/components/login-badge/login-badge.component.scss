@@ -1,0 +1,57 @@
+.wrapper {
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 0 1rem;
+    display: grid;
+    grid-template: 
+    "i lk"
+    "i t" /1fr 5fr;
+    column-gap: 10px;
+}
+
+.block-lk {
+    grid-area: lk;
+}
+
+.block-icon {
+    grid-area: i;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.block-login {
+    margin-top: 3px;
+    grid-area: t;
+    display: flex;
+
+    :not(:first-child) {
+        margin-left: 4px;
+    }
+}
+
+.active {
+    color: #F7A600;
+
+    * {
+        stroke: #F7A600;
+    }
+}
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 270px;
+}
+
+.login-form > * {
+    margin: 0.3rem;
+}
+
+.login-z-index {
+    position: relative;
+    z-index: 100
+}

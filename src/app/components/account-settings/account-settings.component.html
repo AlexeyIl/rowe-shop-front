@@ -1,0 +1,57 @@
+<div class="personal-block" *ngIf="!isChangeModeShow">
+    <div class="personal-item">
+        <label>Имя</label>
+        <div class="p1">{{user.name}}</div>
+    </div>
+    <div class="personal-item">
+        <label>E-mail</label>
+        <div class="p1">{{user.email}}</div>
+    </div>
+    <div class="personal-item">
+        <label>Телефон</label>
+        <div class="p1">{{user.phone}}</div>
+    </div>
+    <div class="personal-item">
+        <label>Пароль</label>
+        <div class="p1"></div>
+    </div>
+    <div class="personal-item">
+        <div>
+            <button class="btn grey" (click)="changeMode()">Редактировать данные</button>
+        </div>
+    </div>
+</div>
+
+<div class="personal-block" *ngIf="isChangeModeShow">
+    <div class="personal-item">
+        <h3>Редактировать личные данные</h3>
+    </div>
+    <div class="personal-item">
+        <form [formGroup]='personalForm' class="personal-form" (ngSubmit)="personalSubmit()">
+            <div class="form-item">
+                <label>Имя</label>
+                <input formControlName="name" type="text" placeholder="Имя">
+                </div>
+            <div class="form-item">
+                <label>Почта</label>
+                <input formControlName="email" type="email" placeholder="Почта">
+                </div>
+            <div class="form-item">
+                <label>Телефон</label>
+                <input formControlName="phone" type="text" placeholder="Телефон">
+                </div>
+            <div class="form-item">
+                <label>Адрес</label>
+                <input formControlName="adress" type="text" placeholder="Адрес">
+                </div>
+            <div class="form-item">
+                <label>Новый пароль</label>
+                <input formControlName="password" type="password" placeholder="Новый пароль">
+                </div>
+            <div class="btn-group">
+                <button class="btn grey" (click)="changeMode()">Отмена</button>
+                <button class="btn yellow" type="submit" [disabled]="!isPersonalFormChange">Сохранить изменения</button>
+            </div>
+        </form>    
+    </div>
+</div>

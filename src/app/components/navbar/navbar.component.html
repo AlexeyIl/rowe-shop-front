@@ -1,0 +1,53 @@
+<div class="wrapper">
+  <div class="container">
+    <ng-container>
+      <div class="navbar">
+        <div class="block logo-block">
+          <a class="logo element" routerLink="">
+            <img class="logo-img" src="assets/logo/logo.svg">
+          </a>
+          <div class="element text-bold-light">
+            официальный интернет магазин
+          </div>
+        </div>
+        <div class="block phone">
+          <div class="element">
+            <div class="text-bold">
+              8(800)888-80-80
+            </div>
+            <div class="text-blue call-request" (click)="callReqModal()">
+              Заказать звонок
+            </div>
+          </div>
+          <div class="element">
+            <div class="text-bold">
+              10:00 - 19:00
+            </div>
+            <div class="text-light">
+              Ежедневно
+            </div>
+          </div>
+        </div>
+        <div class="block badges">
+          <div class="element">
+            <app-login-badge></app-login-badge>
+          </div>
+          <div class="element badge">
+            <svg routerLink="my-account/favorites" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18.4444 20L12.2222 15.5556L6 20V5.77778C6 5.30628 6.1873 4.8541 6.5207 4.5207C6.8541 4.1873 7.30628 4 7.77778 4H16.6667C17.1382 4 17.5903 4.1873 17.9237 4.5207C18.2571 4.8541 18.4444 5.30628 18.4444 5.77778V20Z" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <a [routerLink]="this.isLogged ? ['my-account/favorites'] : ['favorites']">
+              <h4>Избранное</h4>              
+              </a>
+          </div>
+          <div class="element">
+            <app-cart-badge></app-cart-badge>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+
+<app-call-request-modal *ngIf="callReqIsOpen" (closeModal)="callReqModal()"></app-call-request-modal>

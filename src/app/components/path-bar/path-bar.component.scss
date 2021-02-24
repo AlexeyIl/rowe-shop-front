@@ -1,0 +1,22 @@
+@import "../../stylings//variables";
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem auto;
+    padding-left: 3rem;
+}
+
+.path-item {
+    display: flex;
+    color: $medium-grey;
+    cursor: pointer;
+
+    .text {
+        color: $grey;
+    }
+}
+
+.margin {
+    margin: 0 5px;
+}

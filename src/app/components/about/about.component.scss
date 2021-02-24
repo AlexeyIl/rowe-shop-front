@@ -1,0 +1,48 @@
+.main {
+    padding: 0 3rem;
+    min-height: 80vh;
+    display: grid;
+    grid-template:
+    "i1 i1 i1" 400px
+    ". . ." 45px
+    "t1 . t2" 303px
+    ". . ." 45px
+    "t3 . i2" 650px
+    "t4 t4 t4"
+    ". . ." 45px
+    / 675px 70px 675px;
+    width: 1420px;
+
+    .i1 {
+        grid-area: i1;
+        object-fit: contain;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .t1 {
+        grid-area: t1;
+    }
+
+    .t2 {
+        grid-area: t2;
+    }
+
+    .t3 {
+        grid-area: t3;
+    }
+
+    .i2 {
+        grid-area: i2;
+    }
+
+    .t4 {
+        grid-area: t4;
+    }
+
+    h3 {
+        padding-bottom: 16px;
+    }
+}

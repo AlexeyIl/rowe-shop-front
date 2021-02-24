@@ -1,0 +1,65 @@
+<div class="main-container" [ngClass]="{'full-height': additionalIsOpen}">
+    <div class="additional-block" *ngIf="additionalIsOpen">
+        <app-mobile-login-additional *ngIf="additionIsLK"></app-mobile-login-additional>
+        <div class="button-block">
+            <button class="btn grey" (click)="closeAdditionBlock()">Закрыть</button>
+        </div>
+    </div>
+    <div class="bar-block">
+        <a class='bar-item' (click)="navigateTo('/')" [ngClass]="{'home-active': isHome('/') && !this.additionalIsOpen}">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                    <path fill="#3F4E54" d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/>
+                </svg>
+            </span>
+            <span>
+                Главная
+            </span>
+        </a>
+        <a class='bar-item' (click)="navigateTo('/catalog')" [ngClass]="{active: isHome('/catalog') && !this.additionalIsOpen}">
+            <span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 12H21" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 6H21" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 18H21" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            <span>
+                Каталог
+            </span>
+        </a>
+        <a class='bar-item' (click)="navigateTo('/cart')" [ngClass]="{active: isHome('/cart') && !this.additionalIsOpen}">
+            <span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.3519 21.9912C9.84282 21.9912 10.2408 21.5932 10.2408 21.1023C10.2408 20.6113 9.84282 20.2134 9.3519 20.2134C8.86098 20.2134 8.46301 20.6113 8.46301 21.1023C8.46301 21.5932 8.86098 21.9912 9.3519 21.9912Z" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M19.1298 21.9912C19.6207 21.9912 20.0187 21.5932 20.0187 21.1023C20.0187 20.6113 19.6207 20.2134 19.1298 20.2134C18.6388 20.2134 18.2409 20.6113 18.2409 21.1023C18.2409 21.5932 18.6388 21.9912 19.1298 21.9912Z" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2.24084 3.32446H5.7964L8.17862 15.2267C8.25991 15.6359 8.48254 16.0035 8.80755 16.2652C9.13256 16.5268 9.53924 16.6658 9.9564 16.6578H18.5964C19.0136 16.6658 19.4202 16.5268 19.7453 16.2652C20.0703 16.0035 20.2929 15.6359 20.3742 15.2267L21.7964 7.76891H6.68529" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            <span>
+                Корзина
+            </span>
+        </a>
+        <a class='bar-item' (click)="navigateTo('/favorites')" [ngClass]="{active: isHome('/favorites') && !this.additionalIsOpen}">
+            <span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.4444 20L12.2222 15.5556L6 20V5.77778C6 5.30628 6.1873 4.8541 6.5207 4.5207C6.8541 4.1873 7.30628 4 7.77778 4H16.6667C17.1382 4 17.5903 4.1873 17.9237 4.5207C18.2571 4.8541 18.4444 5.30628 18.4444 5.77778V20Z" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            <span>
+                Избранное
+            </span>
+        </a>
+        <a class='bar-item' (click)="lkChange()" [ngClass]="{active: additionIsLK}">
+            <span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.0001 21V19C20.0001 17.9391 19.5786 16.9217 18.8285 16.1716C18.0783 15.4214 17.0609 15 16.0001 15H8.00006C6.9392 15 5.92178 15.4214 5.17163 16.1716C4.42149 16.9217 4.00006 17.9391 4.00006 19V21" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11.9999 11C14.2091 11 15.9999 9.20914 15.9999 7C15.9999 4.79086 14.2091 3 11.9999 3C9.7908 3 7.99994 4.79086 7.99994 7C7.99994 9.20914 9.7908 11 11.9999 11Z" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            <span>
+                ЛК
+            </span>
+        </a>
+    </div>
+</div>

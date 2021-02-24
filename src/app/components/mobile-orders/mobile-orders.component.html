@@ -1,0 +1,25 @@
+<h3>История заказов</h3>
+<div class="body-block">
+    <div *ngFor="let item of (orders | async)">
+        <div class="order-block">
+            <h4>Заказ №{{item.number}} от {{getDate(item.date)}}</h4>
+            <div class="order-product" *ngFor="let p of item.cart">
+                <div class="name">
+                    {{p.product.code}} - {{p.product.name}} - {{p.product.pack}}л 
+                </div>
+                <div class="quantity">
+                    {{p.count}}шт
+                </div>
+                <div class="sum">
+                    {{(p.count * p.product.price) | num}} ₽
+                </div>
+            </div>
+            <div>
+                <h4>
+                    Сумма заказа: {{getSum(item) | num}}₽
+                </h4>
+            </div>
+        </div>
+        <div class="divider"></div>
+    </div>
+</div>

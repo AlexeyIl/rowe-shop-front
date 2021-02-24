@@ -1,0 +1,370 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$rowe-shop-front-primary: mat-palette($mat-red);
+$rowe-shop-front-accent: mat-palette($mat-yellow, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$rowe-shop-front-warn: mat-palette($mat-orange);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$rowe-shop-front-theme: mat-light-theme($rowe-shop-front-primary, $rowe-shop-front-accent, $rowe-shop-front-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($rowe-shop-front-theme);
+
+@import '_variables';
+
+@font-face {
+  font-family: azosans;
+  src: url('./assets/fonts/AzoSans.ttf');
+}
+
+@font-face {
+  font-family: blisspro;
+  src: url('./assets/fonts/BlissPro.ttf');
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  color: $dark-grey;
+  font-family: 'blisspro';
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+*,*:focus,*:hover{
+  outline:none;
+}
+
+h1 {
+  font-size: 30px !important;
+  font-weight: bold !important;
+  font-family: 'blisspro' !important;
+  line-height: 38px !important;
+}
+
+h2 {
+  font-size: 24px !important;
+  font-weight: bold !important;
+  font-family: 'blisspro' !important;
+  line-height: 30px !important;
+}
+
+h3 {
+  font-size: 20px !important;
+  font-weight: bold !important;
+  font-family: 'blisspro' !important;
+  line-height: 18px !important;
+  margin: 0 !important;
+}
+
+h4 {
+  font-size: 16px !important;
+  font-weight: bold !important;
+  font-family: 'blisspro' !important;
+  line-height: 20px !important;
+  margin: 0 !important;
+}
+
+h5 {
+  font-size: 14px !important;
+  font-weight: bold !important;
+  font-family: 'blisspro' !important;
+  line-height: 18px !important;
+}
+
+
+.p1 {
+  color: $dark-grey;
+  line-height: 20px;
+  font-size: 16px;
+}
+
+.p2 {
+  color: $dark-grey;
+  line-height: 18px;
+  font-size: 14px;
+}
+
+.text-discription {
+  font-size: 14px;
+  line-height: 18px;
+  color: $grey;
+}
+
+.text-bold {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: $dark-grey !important;
+}
+
+.text-default {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: $dark-grey !important;
+}
+
+.text-light {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: $grey !important;
+}
+
+.text-bold-light {
+  font-weight: 700;
+  font-size: 16px;
+  color: $grey !important;
+  line-height: 20px;
+}
+
+.text-yellow {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+  color: $yellow !important;
+}
+
+.text-bold-white {
+  color: $white !important;
+  font-weight: 700;
+}
+
+.text-blue {
+  font-size: 14px !important;
+  line-height: 18px;
+  color: $link-blue;  
+}
+
+.text-white {
+  color: $white !important;
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 16.5px;
+  color: $white;
+  border-radius: 4px;
+  border: 0;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &.yellow {
+    background-color: $yellow;
+
+    &:hover {
+      background-color: $gold-yellow;
+    }
+
+    &:active {
+      background-color: $gold-yellow;
+    }
+  }
+
+  &.red {
+    background-color: $main-red;
+
+    &:hover {
+      background-color: $dark-red;
+    }
+
+    &:active {
+      background-color:$dark-red;
+    }
+  }
+
+  &.grey {
+    background-color: $light-grey;
+    color: $dark-grey;
+
+    &:hover {
+      background-color: $medium-grey;
+    }
+
+    &:active {
+      background-color: $medium-grey;
+    }
+  }
+
+  &:disabled {
+    background-color: $light-grey;
+    color: $medium-grey;
+
+    &:hover {
+      background-color: $light-grey;
+    }
+  }
+
+  &.round {
+    border-radius: 100%;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    background-color: $light-grey;
+    color: $grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5px;
+    font-size: 35px;
+    cursor: pointer;
+    padding-bottom: 1rem;
+
+    &:active {
+      background-color: $medium-grey;      
+    }
+  }
+
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  background-color: transparent;
+  color: inherit;
+  cursor: pointer;
+
+  &.blue {
+    font-size: 14px !important;
+    line-height: 18px;
+    color: $link-blue;  
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+input {
+  border: 1px solid $light-grey;
+  height: 40px;
+  padding-left: 10px;
+  border-radius: 3px;
+  font-size: 18px;
+  color: $dark-grey;
+
+  &.error {
+    border-color: $main-red;
+
+    &::placeholder {
+      color: $main-red;
+    }
+  }
+}
+
+select {
+  padding: 0.5rem;
+  border: 2px solid $light-grey;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='grey' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 5px;
+  border: 1px solid #dfdfdf;
+  border-radius: 2px;
+  margin-right: 2rem;
+}
+
+label {
+  &.error {
+    color: $main-red;
+  }
+}
+
+p {
+  &.error {
+    color: $main-red;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.mat-snack-bar-container {
+  span {
+    color: $light-grey !important;
+  }
+}
+
+.cdk-global-overlay-wrapper {
+  position: fixed !important;
+}
+
+.cdk-overlay-pane {
+  padding-bottom: 128px;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.mat-step-icon {
+  span {
+    color: white;
+  }
+}
+
+.mat-step-icon-selected, .mat-step-icon-state-edit {
+  background-color: $yellow !important;
+}
+
+.mat-icon {
+  color: white !important;
+}

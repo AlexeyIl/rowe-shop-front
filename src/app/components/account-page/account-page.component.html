@@ -1,0 +1,118 @@
+<div class="wrapper">
+  <app-path-bar [path]="path"></app-path-bar>
+  <div class="container">
+    <div class="header">
+      <h2>Личный кабинет</h2>
+    </div>
+    <nav class="nav-block">
+      <div class="nav-item first" [routerLink]="'settings'" routerLinkActive="active">
+        <div class="svg-block">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="!isHome('/my-account/settings')">
+            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="isHome('/my-account/settings')">
+            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>            
+        </div>
+        <div>
+          <h4>
+            Учетные данные
+          </h4>
+        </div>
+      </div>
+      <div class="nav-item" [routerLink]="'orders'" routerLinkActive="active">
+        <div class="svg-block">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="!isHome('/my-account/orders')">
+            <path d="M16.1037 9.63236L8.03516 4.97949" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20.1371 15.5492V8.37719C20.1368 8.06277 20.0538 7.75395 19.8964 7.48173C19.7391 7.20951 19.5129 6.98345 19.2406 6.82624L12.9651 3.24022C12.6925 3.08285 12.3833 3 12.0686 3C11.7538 3 11.4446 3.08285 11.172 3.24022L4.89651 6.82624C4.6242 6.98345 4.39803 7.20951 4.24068 7.48173C4.08332 7.75395 4.00032 8.06277 4 8.37719V15.5492C4.00032 15.8637 4.08332 16.1725 4.24068 16.4447C4.39803 16.7169 4.6242 16.943 4.89651 17.1002L11.172 20.6862C11.4446 20.8436 11.7538 20.9264 12.0686 20.9264C12.3833 20.9264 12.6925 20.8436 12.9651 20.6862L19.2406 17.1002C19.5129 16.943 19.7391 16.7169 19.8964 16.4447C20.0538 16.1725 20.1368 15.8637 20.1371 15.5492Z" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4.24219 7.44482L12.0687 11.9722L19.8952 7.44482" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.0684 21V11.9633" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="isHome('/my-account/orders')">
+            <path d="M16.1037 9.63236L8.03516 4.97949" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20.1371 15.5492V8.37719C20.1368 8.06277 20.0538 7.75395 19.8964 7.48173C19.7391 7.20951 19.5129 6.98345 19.2406 6.82624L12.9651 3.24022C12.6925 3.08285 12.3833 3 12.0686 3C11.7538 3 11.4446 3.08285 11.172 3.24022L4.89651 6.82624C4.6242 6.98345 4.39803 7.20951 4.24068 7.48173C4.08332 7.75395 4.00032 8.06277 4 8.37719V15.5492C4.00032 15.8637 4.08332 16.1725 4.24068 16.4447C4.39803 16.7169 4.6242 16.943 4.89651 17.1002L11.172 20.6862C11.4446 20.8436 11.7538 20.9264 12.0686 20.9264C12.3833 20.9264 12.6925 20.8436 12.9651 20.6862L19.2406 17.1002C19.5129 16.943 19.7391 16.7169 19.8964 16.4447C20.0538 16.1725 20.1368 15.8637 20.1371 15.5492Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4.24219 7.44482L12.0687 11.9722L19.8952 7.44482" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.0684 21V11.9633" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>                
+        </div>
+        <div>
+          <h4>
+            История заказов
+          </h4>
+        </div>
+      </div>
+      <div class="nav-item" [routerLink]="'favorites'" routerLinkActive="active">
+        <div class="svg-block">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="!isHome('/my-account/favorites')">
+            <path d="M18.4444 20L12.2222 15.5556L6 20V5.77778C6 5.30628 6.1873 4.8541 6.5207 4.5207C6.8541 4.1873 7.30628 4 7.77778 4H16.6667C17.1382 4 17.5903 4.1873 17.9237 4.5207C18.2571 4.8541 18.4444 5.30628 18.4444 5.77778V20Z" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="isHome('/my-account/favorites')">
+            <path d="M18.4444 20L12.2222 15.5556L6 20V5.77778C6 5.30628 6.1873 4.8541 6.5207 4.5207C6.8541 4.1873 7.30628 4 7.77778 4H16.6667C17.1382 4 17.5903 4.1873 17.9237 4.5207C18.2571 4.8541 18.4444 5.30628 18.4444 5.77778V20Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+  
+        </div>
+        <div>
+          <h4>
+            Избранное
+          </h4>
+        </div>
+      </div>
+      <div class="nav-item" [routerLink]="'adresses'" routerLinkActive="active">
+        <div class="svg-block">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="!isHome('/my-account/adresses')">
+            <path d="M20.3985 10.4825C20.3985 16.5916 12.544 21.8279 12.544 21.8279C12.544 21.8279 4.68945 16.5916 4.68945 10.4825C4.68945 8.39932 5.51698 6.40149 6.99 4.92847C8.46301 3.45546 10.4608 2.62793 12.544 2.62793C14.6272 2.62793 16.625 3.45546 18.098 4.92847C19.571 6.40149 20.3985 8.39932 20.3985 10.4825Z" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.544 13.1006C13.9899 13.1006 15.1621 11.9284 15.1621 10.4824C15.1621 9.03646 13.9899 7.86426 12.544 7.86426C11.098 7.86426 9.92578 9.03646 9.92578 10.4824C9.92578 11.9284 11.098 13.1006 12.544 13.1006Z" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="isHome('/my-account/adresses')">
+            <path d="M20.3985 10.4825C20.3985 16.5916 12.544 21.8279 12.544 21.8279C12.544 21.8279 4.68945 16.5916 4.68945 10.4825C4.68945 8.39932 5.51698 6.40149 6.99 4.92847C8.46301 3.45546 10.4608 2.62793 12.544 2.62793C14.6272 2.62793 16.625 3.45546 18.098 4.92847C19.571 6.40149 20.3985 8.39932 20.3985 10.4825Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.544 13.1006C13.9899 13.1006 15.1621 11.9284 15.1621 10.4824C15.1621 9.03646 13.9899 7.86426 12.544 7.86426C11.098 7.86426 9.92578 9.03646 9.92578 10.4824C9.92578 11.9284 11.098 13.1006 12.544 13.1006Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>            
+      
+        </div>
+        <div>
+          <h4>
+            Мои адреса
+          </h4>
+        </div>
+      </div>
+      <div class="nav-item" [routerLink]="'organisations'" routerLinkActive="active">
+        <div class="svg-block">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="!isHome('/my-account/organisations')">
+            <path d="M20 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7Z" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 21V5C16 4.46957 15.7893 3.96086 15.4142 3.58579C15.0391 3.21071 14.5304 3 14 3H10C9.46957 3 8.96086 3.21071 8.58579 3.58579C8.21071 3.96086 8 4.46957 8 5V21" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>     
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="isHome('/my-account/organisations')">
+            <path d="M20 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 21V5C16 4.46957 15.7893 3.96086 15.4142 3.58579C15.0391 3.21071 14.5304 3 14 3H10C9.46957 3 8.96086 3.21071 8.58579 3.58579C8.21071 3.96086 8 4.46957 8 5V21" stroke=" #ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>            
+       
+        </div>
+        <div>
+          <h4>
+            Мои организации
+          </h4>
+        </div>
+      </div>
+      <div class="nav-item last" (click)="logout()">
+        <div class="svg-block">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.33333 20H5.77778C5.30628 20 4.8541 19.8127 4.5207 19.4793C4.1873 19.1459 4 18.6937 4 18.2222V5.77778C4 5.30628 4.1873 4.8541 4.5207 4.5207C4.8541 4.1873 5.30628 4 5.77778 4H9.33333" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M15.5547 16.4444L19.9991 12L15.5547 7.55554" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20.0007 12H9.33398" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div>
+          <h4>
+            Выйти из аккаунта
+          </h4>
+        </div>
+      </div>
+
+    </nav>
+    <div class="body">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

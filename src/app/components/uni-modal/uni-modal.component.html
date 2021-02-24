@@ -1,0 +1,15 @@
+<div class="modal">
+    <div class="wrapper">
+        <div class="block" *ngIf="context">
+            <div class="header">
+                <h2>{{context.header}}</h2>
+            </div>
+            <div class="body">
+                {{context.body}}
+            </div>
+            <div class="buttons">
+                <button class="btn yellow" (click)="close()">{{context.buttonText}}</button>
+            </div>
+        </div>
+    </div>
+</div>

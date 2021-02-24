@@ -1,0 +1,77 @@
+<div class="modal"
+@open
+[@openClose]="isOpen ? 'open' : 'closed'"
+>
+    <div class="wrapper">
+        <div class="block" *ngIf="!isComplete">
+            <div class="header">
+                <h2>Заявка на подбор масла</h2>
+                <div class="close-icon" (click)="close()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 6L18 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>                        
+                </div>
+            </div>
+            <div class="body">
+                <div class="buttons">                
+                    <form [formGroup]="oilReqForm" class="form-block" (ngSubmit)="submit()">
+                        <div class="form-item">
+                            <label>Имя</label>
+                            <input formControlName="name" placeholder="Введите ваше имя" type="text">
+                        </div>
+                        <div class="form-item">
+                            <label>Телефон</label>
+                            <input formControlName="phone" placeholder="Введите номер телфона для связи" type="text">
+                        </div>
+                        <div class="form-item">
+                            <label>Мартка автомобиля</label>
+                            <input formControlName="carBrand" placeholder="Введите марку автомобиля" type="text">
+                        </div>
+                        <div class="form-item">
+                            <label>Модель автомобиля</label>
+                            <input formControlName="carModel" placeholder="Введите модель автомобиля" type="text">
+                        </div>
+                        <div class="form-item">
+                            <label>Год выпуска</label>
+                            <input formControlName="year" placeholder="Введите год выпуска автомобиля" type="text">
+                        </div>
+                        <div class="form-item">
+                            <label>Тип двигателя</label>
+                            <input formControlName="engine" placeholder="Введите тип двигателя" type="text">
+                        </div>
+                        <div class="form-item">
+                            <label>Тип трансмиссии</label>
+                            <input formControlName="transmission" placeholder="Введите тип трансмисси" type="text">
+                        </div>
+                        <div class="buttons">
+                            <button type="submit" class="btn yellow" [disabled]="!oilReqForm.valid">Отправить</button>
+                        </div>        
+                    </form>
+                </div>    
+            </div>
+        </div>
+        <div class="block" *ngIf="isComplete">
+            <div class="header">
+                <h2>Заявка принята</h2>
+                <div class="close-icon" (click)="close()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 6L18 18" stroke="#3F4E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>                        
+                </div>
+            </div>
+            <div class="body">
+                <p class="p1">
+                    Мы приняли вашу заявку на подбор масла.
+                </p>
+                <p class="p1">
+                    В ближайшее время наш менеджер свяжется с вами.
+                </p>
+            </div>
+            <div class="buttons">
+                <button class="btn yellow" (click)="close()">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>

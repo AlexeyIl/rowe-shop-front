@@ -1,0 +1,76 @@
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 70vh;
+    padding: 0 3rem;
+
+    &.slim {
+        padding: 0 0.5rem;
+    }
+}
+
+.margin-top {
+    margin-top: 0.5rem;
+}
+
+.client-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .client-form-item {
+        display: flex;
+        flex-direction: column;
+
+        input {
+            margin: 0;
+        }
+    }
+
+    .client-form-checkbox {
+        display: flex;
+        align-items: center;
+
+        .conf {
+            display: flex;
+            gap: 0.2rem;
+            align-items: center;
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.personal-checkbox {
+    margin: 0 10px;
+}
+
+.radio {
+    display: flex;
+    flex-direction: row;
+}
+
+.radio-item {
+    display: flex;
+    flex-direction: row;
+    margin: 0 1rem;
+    align-items: center;
+}
+
+.buttons-group {
+    display: flex;
+    justify-content: center;
+    
+    .button-group-item {
+        margin: 0 1rem;
+    }  
+}
+
+.stepper {
+    width: calc(100% - 36px);
+    max-width: 550px;
+}

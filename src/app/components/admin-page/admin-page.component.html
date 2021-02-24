@@ -1,0 +1,23 @@
+<div class="wrapper">
+    <div class="container">
+        <form [formGroup]="uploadForm" class="upload-form" (ngSubmit)="submit()">
+            <div class="item">
+                <label>Склад ЕПЗ</label>
+                <input formControlName="epz" type="file" (change)="onFileChange($event)">
+            </div>
+            <div class="item">
+                <label>Склад ROWE</label>
+                <input formControlName="rowe" type="file" (change)="onFileChange($event)">
+            </div>
+            <div class="item">
+                <button class="btn yellow" [disabled]="!uploadForm.valid">
+                    Загрузить
+                </button>
+            </div>
+            <div class="item" *ngIf="isLoaded">
+                <h5 *ngIf="isSuccess" class="result success">Загрузка успешна, склад обновлен</h5>
+                <h5 *ngIf="!isSuccess" class="result failed">Произошла ошибка, склад не обновлен</h5>
+            </div>
+        </form>
+    </div>
+</div>

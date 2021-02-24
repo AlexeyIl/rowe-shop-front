@@ -1,0 +1,57 @@
+@import "../../stylings/variables";
+
+.main-container {
+
+    &.full-height {
+        height: 100vh;
+    }
+
+    .additional-block {
+        height: calc(100vh - 62px);
+        background-color: $light-grey;
+        display: flex;
+        justify-content: center;
+        padding-top: 3rem;
+        overflow: auto;
+
+        .button-block {
+            position: fixed;
+            bottom: 68px;
+        }
+    }
+
+    .bar-block {
+        height: 62px;
+        width: 100%;
+        background-color: $light-grey;
+        display: flex;
+        align-items: stretch;
+        padding: 10px;
+        overflow: hidden;
+    
+        .bar-item {
+            display: flex;
+            width: 20%;
+            flex-basis: 20%;
+            flex-grow: 1;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+    
+            &.active {
+                * {
+                    stroke: $link-blue;
+                    color: $link-blue;
+                }
+            }
+    
+            &.home-active {
+                * {
+                    fill: $link-blue;
+                    color: $link-blue;
+                }
+            }
+        }
+    } 
+}
+

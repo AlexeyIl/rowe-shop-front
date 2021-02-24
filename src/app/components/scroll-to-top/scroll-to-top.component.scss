@@ -1,0 +1,56 @@
+.scroll-top {
+  width: 2em;
+  height: 2em;
+  border-radius: 100%;
+  border-top-left-radius: 30%;
+  transform: rotate(45deg);
+  background-color: transparent;
+  border: 3px solid #e4170f;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  z-index: 50;
+  color: #ffffff;
+  position: fixed;
+  opacity: 0;
+  cursor: pointer;
+
+  &.slim {
+    bottom: 8rem !important; 
+  }
+
+  &:hover {
+    color: white;
+    background-color: #e4170f;
+  }
+}
+
+.scroll-top-icon {
+  transform: rotate(-45deg);
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  ::before {
+    content: "";
+    position: absolute;
+    height: 30%;
+    width: 30%;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    top: 55%;
+    left: 55%;
+    transform: translate(-50%,-50%);
+  }
+}
+
+
+.show-scrollTop {
+  opacity: 1;
+}

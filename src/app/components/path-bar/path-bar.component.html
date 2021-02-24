@@ -1,0 +1,11 @@
+<div class="wrapper">
+    <div class="container">
+        <div class="path-item noselect" *ngFor="let item of pathArrray; let i = index">
+            <a class="text margin" [routerLink]="[item.link]" [queryParams]="item.queryParams">
+                {{item.name}}
+            </a>
+            <div class="text margin">{{i + 1 < pathArrray.length ? '/' : '' }}</div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,18 @@
+
+<div class="main-block">
+  <div *ngIf="!(isLoading | async)"
+  @open>
+    <ng-container *ngIf="!(isSlim | async)" >
+      <app-navbar></app-navbar>
+      <app-search-bar></app-search-bar>
+    </ng-container>
+    <app-mobile-search-bar *ngIf="isSlim | async"></app-mobile-search-bar>
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+    <app-footer></app-footer>
+    <div class="mobile-bottom-bar" *ngIf="isSlim | async">
+        <app-mobile-bottom-bar></app-mobile-bottom-bar>
+    </div>
+    <app-side-bar></app-side-bar>
+    <app-scroll-to-top></app-scroll-to-top>
+  </div>
+</div>

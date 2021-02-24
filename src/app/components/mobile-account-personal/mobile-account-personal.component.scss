@@ -1,0 +1,15 @@
+@import "../../stylings/variables";
+
+.personal-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+
+    .text-big {
+        font-size: 20px; 
+    }
+
+    .btn-group {
+        gap: 0.5rem;
+    }
+} 

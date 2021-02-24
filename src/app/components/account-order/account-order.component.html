@@ -1,0 +1,54 @@
+<!-- <div *ngIf="(order | async)">
+    <h5 class="text-center">Заказ №{{(order | async)?.number}} от {{getDate((order | async)?.date)}}</h5>
+    <table *ngIf="!(isSlim | async)" mat-table [dataSource]="(order | async)?.cart" class="mat-elevation-z8">
+        <ng-container matColumnDef="no">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>№</th>
+            <td class="text-center row" mat-cell *matCellDef="let element; let i = index" (click)="select(element.product.code)"> {{i + 1}} </td>
+            <td class="text-center row" mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+        <ng-container matColumnDef="code">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Артикул</th>
+            <td class="text-center row" mat-cell *matCellDef="let element" (click)="select(element.product.code)"> {{element.product.code}} </td>
+            <td class="text-center row" mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Название</th>
+            <td class="text-center row" mat-cell *matCellDef="let element" (click)="select(element.product.code)"> {{element.product.name}} {{element.product.pack}}л </td>
+            <td class="text-center row" mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+        <ng-container matColumnDef="quantity">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Количество</th>
+            <td class="text-center row" mat-cell *matCellDef="let element" (click)="select(element.product.code)"> {{element.count}} </td>
+            <td class="text-center row" mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+        <ng-container matColumnDef="price">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Цена</th>
+            <td class="text-center row" mat-cell *matCellDef="let element" (click)="select(element.product.code)"> {{element.product.price | num}}руб </td>
+            <td class="text-center row" mat-footer-cell *matFooterCellDef>Итого</td>
+        </ng-container>
+        <ng-container matColumnDef="sum">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Сумма</th>
+            <td class="text-center row" mat-cell *matCellDef="let element" (click)="select(element.product.code)"> {{element.count * element.product.price | num}}руб </td>
+            <td class="text-center row" mat-footer-cell *matFooterCellDef> {{sum | num}}руб. </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+    </table>
+    <div *ngIf="isSlim | async">
+        <div class="mobile-container">
+            <div class="mobile-row" *ngFor="let item of (order | async)?.cart; let i = index">
+                <div class="mobile-row-item">{{i + 1}}. {{item.product.code}} {{item.product.name}} {{item.product.pack}}л</div>
+                <div class="mobile-row-item">Кол-во: {{item.count}}</div>
+                <div class="mobile-row-item">Цена: {{item.product.price | num}}руб</div>
+                <div class="mobile-row-item">Сумма :{{item.count * item.product.price | num}}руб</div>
+            </div>
+            <div class="mobile-row">
+                ИТОГО: {{sum | num}}руб.
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <a [routerLink]="['', 'my-account','orders']">Назад к заказам</a>
+    </div>
+</div> -->

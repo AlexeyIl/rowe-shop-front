@@ -1,0 +1,32 @@
+.wrapper {
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 0 1rem;
+    display: grid;
+    grid-template: 
+    "i cart"
+    "i rub" /1fr 5fr;
+    column-gap: 10px;
+    width: 233px;
+}
+
+.block-icon {
+    grid-area: i;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.block-cart {
+    grid-area: cart;
+}
+
+.block-rub {
+    grid-area: rub;
+    margin-top: 3px;
+}
+
+.active {
+    color: #F7A600
+}

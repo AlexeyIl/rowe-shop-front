@@ -1,0 +1,30 @@
+<div class="wrapper">
+    <app-path-bar [path]="path"></app-path-bar>
+    <div class="container">
+        <form class="form-login" [formGroup]="loginForm" (ngSubmit)="submit(loginForm)">
+            <h5 class="text-center">Авторизация</h5>
+            <div class="item">
+                <input formControlName="email" type="email" placeholder="Почта">
+            </div>
+            <div class="item">
+                <input formControlName="password" type="password" placeholder="Пароль">
+            </div>
+            <div class="item" *ngIf="error">
+                <div class="error">
+                    Неверное имя пользователя или пароль
+                </div>
+            </div>
+            <div class="item">
+                <button type="submit" class="btn yellow" [disabled]="!loginForm.valid">
+                    Войти
+                </button>
+            </div>
+            <div class="item">
+                <a [routerLink]="['', 'sign']">Ргистрация</a>
+            </div>
+            <div class="item">
+                <a [routerLink]="['','recovery']">Восстановление пароля</a>
+            </div>
+        </form>
+    </div>
+</div>

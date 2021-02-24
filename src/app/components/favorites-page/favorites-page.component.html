@@ -1,0 +1,12 @@
+<div class="main-block" [ngClass]="{slim: (isSlim | async)}">
+    <h2>Избранное</h2>
+    <div class="text-discription">Вы добавили {{ (favorites | async)?.length }} товаров</div>
+    <div class="list" [ngClass]="{slim: (isSlim | async)}">
+        <app-product-badge-second
+        *ngFor="let item of favorites | async"
+        [item]="item"
+        [isFavorite]="true"
+        (removeFavorite)="removeFromFavorites(item)"
+        ></app-product-badge-second>    
+    </div>
+</div>

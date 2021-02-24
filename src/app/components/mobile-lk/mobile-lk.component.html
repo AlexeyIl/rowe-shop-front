@@ -1,0 +1,36 @@
+<div class="main-block">
+    <div class="header">
+        <h2>Личный кабинет</h2>
+        <div>
+            <button class="btn grey" (click)="logout()">
+                Выйти
+            </button>
+        </div>
+    </div>
+    <ng-container [ngSwitch]="currentTemplate">
+        <ng-template ngSwitchCase="main">
+            <div class="body-block">
+                <div class="nav-item noselect" (click)="changeTempalte('personal')">
+                    Учетные данные
+                </div>
+                <div class="divider"></div>
+                <div class="nav-item noselect" (click)="changeTempalte('orders-history')">
+                    История заказов
+                </div>
+            </div>
+        </ng-template>
+        <ng-template ngSwitchCase="orders-history">
+            <app-mobile-orders></app-mobile-orders>
+        </ng-template> 
+        <!-- <ng-template ngSwitchCase="order">
+            <h3>Заказ</h3>
+
+        </ng-template> -->
+        <ng-template ngSwitchCase="personal">
+            <app-mobile-account-personal></app-mobile-account-personal>
+        </ng-template>
+        <div class="main-button" *ngIf="currentTemplate != 'main'">
+            <button class="btn grey" (click)="changeTempalte('main')">На главную</button>
+        </div>
+    </ng-container>
+</div>

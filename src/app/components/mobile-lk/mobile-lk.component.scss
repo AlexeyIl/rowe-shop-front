@@ -1,0 +1,39 @@
+@import "../../stylings/variables";
+
+.main-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+::ng-deep .body-block {
+    background-color: $white;
+    border: 2px solid $medium-grey;
+    border-radius: 15px;
+    padding: 0.2rem;
+    
+    .nav-item {
+        display: flex;
+        align-items: center;
+        height: 2.5rem;
+        padding: 0 1rem;
+    }
+}
+
+::ng-deep h3 {
+    padding-bottom: 12px;
+}
+
+::ng-deep .divider {
+    border-top: 1px solid $light-grey;
+}
+
+.main-button {
+    padding: 0.5rem 0;
+}
+

@@ -1,0 +1,241 @@
+<div class="wrapper" #top>
+  <app-path-bar [path]="path"></app-path-bar>
+  <div class="cont">
+    <ng-template [ngTemplateOutlet]="(isSlim | async) ? slim : thick"></ng-template>
+  </div>
+  <ng-template #thick>
+    <div class="container main-block" *ngIf="product">
+      <div class="left-block">
+        <div class="img-block">
+          <img src="assets/img/{{product.img}}">
+        </div>
+        <div class="head-block">
+          <h2>{{product.name}} {{product.pack}}л</h2>
+          <div class="text-discription">
+            Артикул: {{product.code}}
+          </div>
+          <div class="favorites" (click)="addToFavorites()" *ngIf="!(favorites | async).includes(product.code)">
+            <svg width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.4444 17L7.22222 12.5556L1 17V2.77778C1 2.30628 1.1873 1.8541 1.5207 1.5207C1.8541 1.1873 2.30628 1 2.77778 1H11.6667C12.1382 1 12.5903 1.1873 12.9237 1.5207C13.2571 1.8541 13.4444 2.30628 13.4444 2.77778V17Z" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div>
+                Добавить в избранное          
+              </div>
+          </div>
+          <div class="favorites" (click)="removeFromFavorites()"  *ngIf="(favorites | async).includes(product.code)">
+            <svg width="15" height="18" viewBox="0 0 15 18" fill="#e4170f" xmlns="http://www.w3.org/2000/svg">
+              <path class="red" d="M13.4444 17L7.22222 12.5556L1 17V2.77778C1 2.30628 1.1873 1.8541 1.5207 1.5207C1.8541 1.1873 2.30628 1 2.77778 1H11.6667C12.1382 1 12.5903 1.1873 12.9237 1.5207C13.2571 1.8541 13.4444 2.30628 13.4444 2.77778V17Z" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div>
+                Продукт уже в избранном        
+              </div>
+          </div>
+        </div>
+        <div class="capacity-block">
+          <h2 class="h2">Объем</h2>
+          <div class="pack-block">
+            <div class="pack-item" [routerLink]="['/catalog', item.code]" routerLinkActive="pack-item-active"
+            *ngFor="let item of packsList | async">{{item.pack}}л
+            </div>  
+          </div>
+          <div class="text-green">В наличии {{product.quantity}}шт</div>
+        </div>
+        <div class="pdf-block">
+          <div class="pdf-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V9L13 2Z" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13 2V9H20" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <a class="blue" *ngIf="product.pass" href="assets/pass/{{product.pass}}" target="_blank">Паспорт безопасности</a>
+          </div>
+          <div class="pdf-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V9L13 2Z" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13 2V9H20" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <a class="blue" *ngIf="product.tech" href="assets/tech/{{product.tech}}" target="_blank">Техническая информация</a>            
+          </div>
+        </div>
+        <div class="approvs-block">
+          <div class="approvs-item" *ngIf="product.approvs">
+            <h4>Допуски:</h4>
+            <p>
+              {{product.approvs.join(', ')}}
+            </p>
+          </div>
+          <div class="approvs-item" *ngIf="product.approvsEqual">
+            <h4>
+              Равноценно по качеству в соответствии с законодательством ЕС: 
+            </h4>
+            <p>
+              {{product.approvsEqual.join(', ')}}
+            </p>
+          </div>
+          <div class="approvs-item" *ngIf="product.approvsRecomendation">
+            <h4>
+              Рекомендуется к применению, когда соответствует: 
+            </h4>
+            <p>
+              {{product.approvsRecomendation.join(', ')}}
+            </p>
+          </div>
+        </div>
+        <div class="discription-block">
+          <div class="discription-item" *ngIf="product.fullDiscription">
+            <h2 class="h2">Описание</h2>
+            <p class="p1">
+              {{product.fullDiscription}}
+            </p>
+          </div>
+          <div class="discription-item" *ngIf="product.using">
+            <h2 class="h2">Применение</h2>
+            <p class="p1">
+              {{product.using}}
+            </p>
+          </div>
+          <div class="discription-item" *ngIf="product.benefits">
+            <h2 class="h2">Приемущества</h2>
+            <p class="p1" *ngFor="let item of product.benefits.split('\n')">
+              · {{item}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="right-block">
+        <div class="purchase-block">
+          <div class="price">
+            {{product.price | num}} ₽
+          </div>
+          <div class="counter">
+            <button class="btn round" (click)="removeOne()">-</button>
+            <input type="text" min=1 class="text-center" [(ngModel)]="count" value="1">
+            <button class="btn round" (click)="addOne()">+</button>
+          </div>
+          <div class="button">
+            <button class="btn red" (click)="addToCart(product, count)">Добавить в корзину</button>
+          </div>
+        </div>
+        <div class="help-block">
+          <div class="background">
+            <svg width="170" height="100" viewBox="0 0 170 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.85687 20.0938L84.7 40L103.795 32.125C107.161 30.75 110.866 30 114.61 30H136.125V15L114.95 15C111.622 15 108.9 12.75 108.9 10V5C108.9 2.25 111.622 0 114.95 0L175.45 0C178.777 0 181.5 2.25 181.5 5V10C181.5 12.75 178.777 15 175.45 15L154.275 15V30H175.45C231.828 21.5312 228.35 21.9688 229.938 21.9688C236.479 21.9688 242 26.3438 242 31.9688V61.625C242 66.4688 237.803 70.5938 232.055 71.4688L205.7 75.4688V90C205.7 95.5312 200.293 100 193.6 100L89.7669 100C86.5528 100 83.4144 98.9375 81.1456 97.0313L0.869675 29.9063C0.30249 29.4375 0 28.8125 0 28.125V22.5C0 20.6875 2.07968 19.6875 3.85687 20.0938ZM205.7 60.2188L223.85 57.5V38L205.7 40.7188V60.2188ZM92.3003 85L187.55 85V45L114.61 45C113.664 45 112.719 45.1875 111.925 45.5313C88.7838 55.0938 94.5312 52.7188 86.4016 56.0625C76.7594 53.6875 81.4859 54.8438 45.7153 46.0313L92.3003 85ZM34.2959 86.6563C34.2959 94.0313 27.0737 100 18.15 100C9.22624 100 2.00404 94.0313 2.00404 86.6563C2.00404 79.2812 18.15 60 18.15 60C18.15 60 34.2959 79.3125 34.2959 86.6563Z" fill="#F6F8F9"/>
+              </svg>           
+          </div>
+          <h2>Нужна помощь?</h2>
+          <p class="p1 text">Просто оставьте заявку и наши специалисты подберут для вас подходящий продукт!</p>
+          <div class="button">
+            <button class="btn grey" (click)="helpRequest()">Оставить заявку</button>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </ng-template>
+
+  <ng-template #slim>
+    <div class="mobile-block" *ngIf="product">
+      <div class="mobile-info-block">
+        <div class="mobile-img">
+          <img src="assets/img/{{product.img}}">
+        </div>
+        <h2>{{product.name}} {{product.pack}}л</h2>
+        <span class="text-discription">
+          Артикул: {{product.code}}
+        </span>
+        <h3 class="text-red">
+          {{product.price | num}} ₽
+        </h3>
+        <h4 class="mobile-text-green">
+          В наличии {{product.quantity}}шт
+        </h4>
+        <div>
+          <h2 class="h2">Объем:</h2>
+          <div class="pack-block">
+            <div class="pack-item" [routerLink]="['/catalog', item.code]" routerLinkActive="pack-item-active"
+            *ngFor="let item of packsList | async">{{item.pack}}л
+            </div>  
+          </div>
+        </div>
+        <div>
+          <div *ngIf="product.approvs">
+            <h4>Допуски:</h4>
+            <p>
+              {{product.approvs.join(', ')}}
+            </p>
+          </div>
+          <div *ngIf="product.approvsEqual">
+            <h4>
+              Равноценно по качеству в соответствии с законодательством ЕС: 
+            </h4>
+            <p>
+              {{product.approvsEqual.join(', ')}}
+            </p>
+          </div>
+          <div *ngIf="product.approvsRecomendation">
+            <h4>
+              Рекомендуется к применению, когда соответствует: 
+            </h4>
+            <p>
+              {{product.approvsRecomendation.join(', ')}}
+            </p>
+          </div>
+        </div>
+        <div class="mobile-pdf-block">
+          <div class="pdf-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V9L13 2Z" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13 2V9H20" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <a class="blue" *ngIf="product.pass" href="assets/pass/{{product.pass}}" target="_blank">Паспорт безопасности</a>
+          </div>
+          <div class="pdf-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V9L13 2Z" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13 2V9H20" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <a class="blue" *ngIf="product.tech" href="assets/tech/{{product.tech}}" target="_blank">Техническая информация</a>            
+          </div>
+        </div>
+        <div>
+          <div *ngIf="product.fullDiscription">
+            <h3>Описание</h3>
+            <p>
+              {{product.fullDiscription}}
+            </p>
+          </div>
+          <div *ngIf="product.using">
+            <h3>Применение</h3>
+            <p>
+              {{product.using}}
+            </p>
+          </div>
+          <div *ngIf="product.benefits">
+            <h3>Приемущества</h3>
+            <p *ngFor="let item of product.benefits.split('\n')">
+              · {{item}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-bottom-bar" *ngIf="product">
+      <div class="mobile-buttons-block">
+        <div class="counter slim">
+          <button class="btn round" (click)="removeOne()">-</button>
+          <input class="slim-input" type="text" min=1 class="text-center" [(ngModel)]="count" value="1">
+          <button class="btn round" (click)="addOne()">+</button>
+        </div>
+        <div>
+          <button class="btn red" (click)="addToCart(product, count)">Добавить в корзину</button>
+        </div>
+        <div>
+          <button class="btn yellow mobile-button-item" (click)="addToFavorites()" *ngIf="!(favorites | async).includes(product.code)">
+            <svg class="fav-button-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="24px" height="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/></svg>
+          </button>
+          <button class="btn yellow mobile-button-item" (click)="removeFromFavorites()" *ngIf="(favorites | async).includes(product.code)">
+            <svg class="fav-button-red" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="black" width="24px" height="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </button>
+        </div>
+      </div>    
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,60 @@
+<ng-container *ngIf="!(isSlim | async)">
+  <div class="wrapper">
+    <div class="container">
+      <div class="bar">
+        <div class="nav-bar text-bold">
+          <div class="catalog" (click)="catalogListSwitch()">
+            <div class="svg-block flex-center">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+              *ngIf="!catalogListIsOpen">
+                <path d="M3 12H21" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 6H21" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 18H21" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>                  
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                *ngIf="catalogListIsOpen">
+                <path d="M6 6L18.7279 18.7279" stroke="#90A4AE" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M6 18.728L18.7279 6.00011" stroke="#90A4AE" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div>
+              Каталог
+            </div>
+          </div>
+          <a class="nav-element text-center" [routerLink]="['/podbor']" routerLinkActive="active">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23.6175 8.41125L15.6 10.8L13.7063 9.855C13.3725 9.69 13.005 9.6 12.6337 9.6H10.5V7.8H12.6C12.93 7.8 13.2 7.53 13.2 7.2V6.6C13.2 6.27 12.93 6 12.6 6H6.6C6.27 6 6 6.27 6 6.6V7.2C6 7.53 6.27 7.8 6.6 7.8H8.7V9.6H6.6C1.00875 8.58375 1.35375 8.63625 1.19625 8.63625C0.5475 8.63625 0 9.16125 0 9.83625V13.395C0 13.9763 0.41625 14.4713 0.98625 14.5763L3.6 15.0563V16.8C3.6 17.4638 4.13625 18 4.8 18H15.0975C15.4163 18 15.7275 17.8725 15.9525 17.6438L23.9138 9.58875C23.97 9.5325 24 9.4575 24 9.375V8.7C24 8.4825 23.7938 8.3625 23.6175 8.41125ZM3.6 13.2263L1.8 12.9V10.56L3.6 10.8863V13.2263ZM14.8463 16.2H5.4V11.4H12.6337C12.7275 11.4 12.8213 11.4225 12.9 11.4637C15.195 12.6113 14.625 12.3263 15.4313 12.7275C16.3875 12.4425 15.9187 12.5813 19.4662 11.5238L14.8463 16.2ZM20.5988 16.3988C20.5988 17.2837 21.315 18 22.2 18C23.085 18 23.8013 17.2837 23.8013 16.3988C23.8013 15.5138 22.2 13.2 22.2 13.2C22.2 13.2 20.5988 15.5175 20.5988 16.3988Z" fill="#90A4AE"/>
+              </svg>
+              <div>Подбор масла</div>
+            </a>
+          <a class="nav-element text-center" [routerLink]="['/dostavka']" routerLinkActive="active">Доставка и
+            оплата</a>
+          <a class="nav-element text-center" [routerLink]="['/opt']" routerLinkActive="active">Оптовым покупателям</a>
+        </div>
+        <div class="block-search">
+          <input class="input-search" type="text" #search placeholder="Начните вводить артикул или название"
+            (keyup.enter)="searchButton()" (click)="clearInput()">
+          <div class="flex-center">
+            <button class="btn yellow" (click)="searchButton()">Найти</button>
+          </div>
+          <div class="input-help" *ngIf="(helpList && helpList.length > 0) || isLoading">
+            <div class="item-help" *ngIf="isLoading">
+              <a>Загрузка...</a>
+            </div>
+            <div class="item-help" *ngFor="let item of helpList.slice(0,5)" (click)="clearInput()" [routerLink]="['/catalog/', item.code]">
+              <a>{{item.name}} - {{item.price | num}}Р</a>
+            </div>
+            <div class="item-help" *ngIf="helpList.length > 4" (click)="searchButton()">
+              <a>Еще {{helpList.length - 5}} результатов</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <app-catalog-dropdown (closeCatalogListEmitter)="catalogListSwitch()" [isOpenCheck]="catalogListIsOpen"></app-catalog-dropdown>
+  </div>
+</ng-container>

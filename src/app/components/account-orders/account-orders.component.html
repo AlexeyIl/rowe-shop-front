@@ -1,0 +1,43 @@
+<div>
+    <div class="order-list-block" *ngIf="(orders | async)?.length > 0">
+        <div class="order-block" *ngFor="let item of orders | async">
+            <div class="header">
+                <h3>Заказ № {{item.number}}</h3>
+                <h3 class="grey">от {{getDate(item.date)}}</h3>
+            </div>
+            <div class="body">
+                <a class="item" *ngFor="let cartItem of item.cart" [routerLink]="['/catalog', cartItem.product.code]">
+                    <div class="img">
+                        <img src="assets/img/small/{{cartItem.product.img}}">
+                    </div>
+                    <div class="info">
+                        <div class="text-discription">
+                            Артикул: {{cartItem.product.code}}
+                        </div>
+                        <h4>{{cartItem.product.name}} {{cartItem.product.pack}}л</h4>
+                    </div>
+                    <div class="quantity flex-center">
+                        <h4>
+                            {{cartItem.count}} шт
+                        </h4>
+                    </div>
+                    <div class="sum">
+                        <h4>
+                            {{(cartItem.count * cartItem.product.price) | num}} ₽
+                        </h4>
+                    </div>
+
+                </a>
+            </div>
+            <div class="delivery">
+                <h5>Доставка</h5>
+                <h5></h5>
+            </div>
+            <div class="total-sum">
+                <h4>Сумма заказа:</h4>
+                <h4>{{getSum(item) | num}} ₽</h4>
+            </div>
+        </div>
+    </div>
+    
+</div>

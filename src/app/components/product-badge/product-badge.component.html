@@ -1,0 +1,31 @@
+<div class="product-container">
+  <a class="img-block flex-center" [routerLink]="['/catalog', item.code]">
+    <img src="assets/img/small/{{item.img}}">
+  </a>
+  <div class="price-block">
+    <div class="text-bold">
+      {{item.price | num}} ₽
+    </div>
+    <div class="text-bold">
+      Склад: {{item.quantity}} шт
+    </div>
+  </div>
+  <a class="text-block" [routerLink]="['/catalog', item.code]">
+    {{ item.name}} {{ item.pack }}л
+  </a>
+  <div class="btn-group">
+    <div>
+      <button class="btn red" (click)="addToCart(item)">В корзину</button>
+    </div>
+    <div *ngIf="!isFavorite">
+      <svg (click)="addToFavorites(item)" width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.4444 17L7.22222 12.5556L1 17V2.77778C1 2.30628 1.1873 1.8541 1.5207 1.5207C1.8541 1.1873 2.30628 1 2.77778 1H11.6667C12.1382 1 12.5903 1.1873 12.9237 1.5207C13.2571 1.8541 13.4444 2.30628 13.4444 2.77778V17Z" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>        
+    </div>
+    <div *ngIf="isFavorite">
+      <svg (click)="removeFromFavorites(item)" width="15" height="18" viewBox="0 0 15 18" fill="#e4170f" xmlns="http://www.w3.org/2000/svg">
+        <path class="favorite-red" d="M13.4444 17L7.22222 12.5556L1 17V2.77778C1 2.30628 1.1873 1.8541 1.5207 1.5207C1.8541 1.1873 2.30628 1 2.77778 1H11.6667C12.1382 1 12.5903 1.1873 12.9237 1.5207C13.2571 1.8541 13.4444 2.30628 13.4444 2.77778V17Z" stroke="#CFD8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>        
+    </div>
+  </div>
+</div>

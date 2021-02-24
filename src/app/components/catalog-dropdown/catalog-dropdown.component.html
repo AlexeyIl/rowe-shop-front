@@ -1,0 +1,17 @@
+<div class="dropdown-wrapper" [ngClass]="{active: isShow}">
+    <div class="dropdown-container"
+    [@openClose]="isOpen ? 'open' : 'closed'"
+    >
+        <div class="menu">
+            <div class="menu-item" *ngFor="let item of catalogList" [routerLink]="['catalog']" [queryParams]="{category: item.link}"
+            routerLinkActive="router-link-active" (click)="closeMenu()">
+                <div class="svg-block">
+                    <img src="assets/icons/catalog/{{item.svg}}.svg" alt="">                
+                </div>
+                <div class="text-bold text-block">{{item.name}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="invisible-bottom"></div>
+</div>
+

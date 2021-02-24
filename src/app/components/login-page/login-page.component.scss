@@ -1,0 +1,33 @@
+.form-login {
+    display: flex;
+    flex-direction: column;
+    min-height: 70vh;
+    justify-content: center;
+}
+
+.item {
+    margin: 0 auto 12px auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 640px;
+}
+
+.error {
+    color: red;
+    font-size: 20px;
+}
+
+input {
+    min-width:  324px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0.3rem;
+    margin-bottom: 0;
+}
+
+a {
+    text-align: center;
+    cursor: pointer;
+}

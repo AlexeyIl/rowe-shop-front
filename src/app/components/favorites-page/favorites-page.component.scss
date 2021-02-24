@@ -1,0 +1,23 @@
+.main-block {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin: 0 auto;
+    max-width: 1440px;
+
+    &.slim {
+        margin: 0;
+        max-width: none;
+    }
+
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        &.slim {
+            justify-content: center;
+        }
+    }
+}

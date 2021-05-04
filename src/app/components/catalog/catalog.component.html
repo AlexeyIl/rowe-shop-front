@@ -20,7 +20,7 @@
                         <h3>Категория</h3>
                         <div class="category-group">
                             <div class="category-btn" 
-                            [ngClass]="{active: currentCategory === undefined}"
+                            [ngClass]="{active: !currentCategory}"
                             (click)="changeCategory('all')"
                             >Все</div>
                             <div class="category-btn" *ngFor="let item of catalogList" 
@@ -31,23 +31,23 @@
                     </div>
                     <div class="filter-item">
                         <h3>Вязкость</h3>
-                        <div class="checkbox-group" *ngIf="currentCategory != undefined">
+                        <div class="checkbox-group" *ngIf="currentCategory">
                             <div class="checkbox-item" *ngFor="let item of (filterList | async)?.sae">
                                 <input type="checkbox" (change)="saeCheckbox($event, item)">
                                 <label>{{item}}</label>
                             </div>
                         </div>
-                        <div class="text-discription" *ngIf="currentCategory === undefined">Выберите категорию</div>
+                        <div class="text-discription" *ngIf="!currentCategory">Выберите категорию</div>
                     </div>
                     <div class="filter-item">
                         <h3>Объем</h3>
-                        <div class="checkbox-group" *ngIf="currentCategory != undefined">
+                        <div class="checkbox-group" *ngIf="currentCategory">
                             <div class="checkbox-item" *ngFor="let item of (filterList | async)?.pack">
                                 <input type="checkbox" (change)="packCheckbox($event, item)">
                                 <label>{{item}}л</label>
                             </div>
                         </div>
-                        <div class="text-discription" *ngIf="currentCategory === undefined">Выберите категорию</div>
+                        <div class="text-discription" *ngIf="!currentCategory">Выберите категорию</div>
                     </div>
                 </div>
                 <div class="list-block" *ngIf="(catalog | async)?.length > 0">
@@ -87,7 +87,7 @@
                         <h3>Категория</h3>
                         <div class="category-group">
                             <div class="category-btn" 
-                            [ngClass]="{active: currentCategory === undefined}"
+                            [ngClass]="{active: !currentCategory}"
                             (click)="changeCategory('all')"
                             >Все</div>
                             <div class="category-btn" *ngFor="let item of catalogList" 
@@ -98,23 +98,23 @@
                     </div>
                     <div class="filter-item">
                         <h3>Вязкость</h3>
-                        <div class="checkbox-group" *ngIf="currentCategory != undefined">
+                        <div class="checkbox-group" *ngIf="currentCategory">
                             <div class="checkbox-item" *ngFor="let item of (filterList | async)?.sae">
                                 <input type="checkbox" (change)="saeCheckbox($event, item)">
                                 <label>{{item}}</label>
                             </div>
                         </div>
-                        <div class="text-discription" *ngIf="currentCategory === undefined">Выберите категорию</div>
+                        <div class="text-discription" *ngIf="!currentCategory">Выберите категорию</div>
                     </div>
                     <div class="filter-item">
                         <h3>Объем</h3>
-                        <div class="checkbox-group" *ngIf="currentCategory != undefined">
+                        <div class="checkbox-group" *ngIf="currentCategory">
                             <div class="checkbox-item" *ngFor="let item of (filterList | async)?.pack">
                                 <input type="checkbox" (change)="packCheckbox($event, item)">
                                 <label>{{item}}л</label>
                             </div>
                         </div>
-                        <div class="text-discription" *ngIf="currentCategory === undefined">Выберите категорию</div>
+                        <div class="text-discription" *ngIf="!currentCategory">Выберите категорию</div>
                     </div>
                     <div class="flex-center">
                         <button class="btn grey" (click)="mobileFilterChange()">Закрыть</button>
